@@ -23,9 +23,9 @@ char AuxilaryMethods::wczytajZnak() {
     return znak;
 }
 string AuxilaryMethods::loadLine() {
-    string wejscie = "";
-    getline(cin, wejscie);
-    return wejscie;
+    string line = "";
+    getline(cin, line);
+    return line;
 }
 
 int AuxilaryMethods::konwersjaStringNaInt(string liczba) {
@@ -45,12 +45,12 @@ string AuxilaryMethods::pobierzLiczbe(string tekst, int pozycjaZnaku) {
     return liczba;
 }
 
-string AuxilaryMethods::zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst) {
-    if (!tekst.empty()) {
-        transform(tekst.begin(), tekst.end(), tekst.begin(), ::tolower);
-        tekst[0] = toupper(tekst[0]);
+string AuxilaryMethods::changeFirstLetterToCapital(string text) {
+    if (!text.empty()) {
+        transform(text.begin(), text.end(), text.begin(), ::tolower);
+        text[0] = toupper(text[0]);
     }
-    return tekst;
+    return text;
 }
 int AuxilaryMethods::wczytajLiczbeCalkowita() {
     string wejscie = "";

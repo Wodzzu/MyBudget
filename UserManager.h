@@ -4,6 +4,7 @@
 #include <fstream>
 
 #include "User.h"
+#include "AuxilaryMethods.h"
 
 using namespace std;
 
@@ -17,7 +18,7 @@ int setNewUserId();
 
 public:
   void registerUser();
-  void logInUser();
+  int logInUser();
   void logOutUser();
   void changeUserPassword();
   void showAllData();

@@ -14,7 +14,7 @@ public:
     static string loadLine();
     static int konwersjaStringNaInt(string liczba);
     static string pobierzLiczbe(string tekst, int pozycjaZnaku);
-    static string zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst);
+    static string changeFirstLetterToCapital(string tekst);
     static int wczytajLiczbeCalkowita();
 };
 #endif

@@ -10,7 +10,9 @@ int main()
 
     UserManager usermanager;
     usermanager.registerUser();
+   // usermanager.registerUser();
     usermanager.showAllData();
+    usermanager.logInUser();
 
 
 
