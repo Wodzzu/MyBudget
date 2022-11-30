@@ -35,10 +35,12 @@ User UserManager::setNewUserData() {
     return user;
 }
 
+
+
 void UserManager::registerUser(){
 
 User user = setNewUserData();
-
+userFile.addUserToFile(user);
 users.push_back(user);
 
 cout << endl << "Account registered" << endl << endl;
@@ -95,4 +97,5 @@ int UserManager::logInUser()
     system("pause");
     return 0;
 }
+
 

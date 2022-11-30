@@ -1,3 +1,5 @@
+#ifndef User_H
+#define User_H
 #include <iostream>
 
 
@@ -25,3 +27,4 @@ class User {
     string getPassword();
 
 };
+#endif

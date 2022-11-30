@@ -1,7 +1,6 @@
 #include <iostream>
 
 
-
 using namespace std;
 
 class DBFile {
@@ -11,4 +10,6 @@ class DBFile {
  public:
 
     DBFile(string fileName): FILE_NAME(fileName) {};
+
+    string getFileName();
 };
