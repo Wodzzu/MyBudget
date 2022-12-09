@@ -34,6 +34,7 @@ public:
   void logOutUser();
   void changeUserPassword();
   void showAllData();
+  bool ifLoginExists(string login);
 
 };
 #endif

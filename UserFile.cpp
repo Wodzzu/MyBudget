@@ -55,42 +55,9 @@ while(xml.FindElem("User")){
 }
 else {
 
- cout << "I can not load the file."<< endl<<endl;
+ cout << "I can not load the Users file."<< endl<<endl;
 }
 return users;
 
 
 }
-
-
-
-/*void UserFile::pobieranieElementow(){
-
-CMarkup xml;
-User user;
-
-xml.Load(getFileName());
-xml.FindElem();
-xml.IntoElem();
-while(xml.FindElem("User")){
-
-        xml.IntoElem();
-        xml.FindElem("UserId");
-        user.setId(atoi(MCD_2PCSZ(xml.GetData())));
-   cout<<     user.getId() <<endl;
-        xml.FindElem("FirstName");
-        user.setFirstName(xml.GetData());
-    cout << user.getFirstName()<<endl;
-        xml.FindElem("LastName");
-        user.setLastName(xml.GetData());
-        cout << user.getLastName() <<endl;
-        xml.FindElem("Login");
-        user.setLogin(xml.GetData());
-            cout << user.getLogin()<<endl;
-        xml.FindElem("Password");
-        user.setPassword(xml.GetData());
-            cout << user.getPassword()<<endl;
-             xml.OutOfElem();
-}
-}
-*/

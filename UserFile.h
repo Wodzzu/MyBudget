@@ -16,7 +16,6 @@ public:
 
 void addUserToFile(User user);
 vector <User> loadUsersFromFile();
-void pobieranieElementow();
 
 UserFile(string UserFileName) : DBFile(UserFileName) {
     };

@@ -9,10 +9,10 @@ int main()
     cout << "Hello world!" << endl;
 
     UserManager usermanager("users.xml");
-  // usermanager.registerUser();
+   usermanager.registerUser();
   // usermanager.registerUser();
  // usermanager.loadUsersFromFile();
-    usermanager.showAllData();
+   // usermanager.showAllData();
 
 
 
