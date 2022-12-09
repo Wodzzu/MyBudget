@@ -1,5 +1,6 @@
 #include <iostream>
 
+#include "Markup.h"
 
 using namespace std;
 
@@ -9,7 +10,9 @@ class DBFile {
 
  public:
 
+
     DBFile(string fileName): FILE_NAME(fileName) {};
 
     string getFileName();
+     bool isFileEmpty();
 };

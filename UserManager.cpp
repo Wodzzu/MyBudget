@@ -61,6 +61,8 @@ void UserManager::showAllData()
     system("pause");
 }
 
+
+
 int UserManager::logInUser()
 {
     User user;
@@ -98,4 +100,8 @@ int UserManager::logInUser()
     return 0;
 }
 
+void UserManager::loadUsersFromFile()
+{
+    userFile.loadUsersFromFile();
+}
 

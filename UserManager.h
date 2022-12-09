@@ -26,9 +26,10 @@ int setNewUserId();
 
 public:
         UserManager(string userFileName) : userFile(userFileName)
-    {};
+    {users = userFile.loadUsersFromFile();};
+    void loadUsersFromFile();   //////////////////////////
   void registerUser();
- // void addUserToFile(User user);
+ void addUserToFile(User user);
   int logInUser();
   void logOutUser();
   void changeUserPassword();

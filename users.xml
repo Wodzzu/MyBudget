@@ -1,16 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <Users>
 <User>
 <UserId>1</UserId>
-<FirstName>Adam</FirstName>
-<LastName>Misio</LastName>
+<FirstName>Firma</FirstName>
+<LastName>123</LastName>
 <Login>123</Login>
-<Password>321</Password>
+<Password>123</Password>
 </User>
 <User>
-<UserId>2</UserId>
-<FirstName>Roman</FirstName>
-<LastName>Polanski</LastName>
-<Login>123</Login>
-<Password>321</Password>
+<UserId>1</UserId>
+<FirstName>Gama</FirstName>
+<LastName>123</LastName>
+<Login>213</Login>
+<Password>123</Password>
 </User>
 </Users>

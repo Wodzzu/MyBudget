@@ -2,8 +2,9 @@
 #define UserFile_H
 #include <iostream>
 #include <vector>
+#include <cstdlib>
 
-#include "Markup.h"
+//#include "Markup.h"
 #include "DBFile.h"
 #include "User.h"
 
@@ -13,9 +14,13 @@ class UserFile : public DBFile {
 
 public:
 
+void addUserToFile(User user);
+vector <User> loadUsersFromFile();
+void pobieranieElementow();
+
 UserFile(string UserFileName) : DBFile(UserFileName) {
     };
-void addUserToFile(User user);
+
 
 };
 #endif
