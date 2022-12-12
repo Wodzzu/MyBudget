@@ -113,3 +113,12 @@ void UserManager::loadUsersFromFile() {
     userFile.loadUsersFromFile();
 }
 
+int UserManager::getLoggedUserId(){
+
+return loggedUserId;
+}
+
+void UserManager::setLoggedUserId(int newId){
+
+loggedUserId = newId;
+}

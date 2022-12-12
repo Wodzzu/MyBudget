@@ -7,20 +7,20 @@ string AuxilaryMethods::konwerjsaIntNaString(int liczba) {
     return str;
 }
 
-char AuxilaryMethods::wczytajZnak() {
-    string wejscie = "";
-    char znak  = {0};
+char AuxilaryMethods::loadMark() {
+    string enter = "";
+    char mark  = {0};
 
     while (true) {
-        getline(cin, wejscie);
+        getline(cin, enter);
 
-        if (wejscie.length() == 1) {
-            znak = wejscie[0];
+        if (enter.length() == 1) {
+            mark = enter[0];
             break;
         }
-        cout << "To nie jest pojedynczy znak. Wpisz ponownie." << endl;
+        cout << "This is not simple mark. Try agian" << endl;
     }
-    return znak;
+    return mark;
 }
 string AuxilaryMethods::loadLine() {
     string line = "";

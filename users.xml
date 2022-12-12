@@ -3,15 +3,8 @@
 <User>
 <UserId>1</UserId>
 <FirstName>Adam</FirstName>
-<LastName>Glapinski</LastName>
-<Login>Adam</Login>
-<Password>123</Password>
-</User>
-<User>
-<UserId>2</UserId>
-<FirstName>Kkawak</FirstName>
-<LastName>Dasd</LastName>
-<Login>Jarek</Login>
+<LastName>Rutkowski</LastName>
+<Login>Falanga</Login>
 <Password>123</Password>
 </User>
 </Users>

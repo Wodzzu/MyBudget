@@ -16,24 +16,28 @@ using namespace std;
 class UserManager {
 
 
-UserFile userFile;
+    UserFile userFile;
 
-int loggedUserId;
-vector <User> users;
+    int loggedUserId;
+    vector <User> users;
 
-User setNewUserData();
-int setNewUserId();
+    User setNewUserData();
+    int setNewUserId();
 
 public:
-        UserManager(string userFileName) : userFile(userFileName)
-    {users = userFile.loadUsersFromFile();};
-    void loadUsersFromFile();   //////////////////////////
-  void registerUser();
-  int logInUser();
-  void logOutUser();
-  void changeUserPassword();
-  void showAllData();
-  bool ifLoginExists(string login);
+    UserManager(string userFileName) : userFile(userFileName) {
+        loggedUserId =0;
+        users = userFile.loadUsersFromFile();
+    };
+    void loadUsersFromFile();
+    void registerUser();
+    int logInUser();
+    void logOutUser();
+    void changeUserPassword();
+    void showAllData();
+    bool ifLoginExists(string login);
+    int getLoggedUserId();
+    void setLoggedUserId(int newId);
 
 };
 #endif
