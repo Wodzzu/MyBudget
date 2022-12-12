@@ -7,4 +7,11 @@
 <Login>wodzu</Login>
 <Password>123</Password>
 </User>
+<User>
+<UserId>2</UserId>
+<FirstName>Mama</FirstName>
+<LastName>Gladoch</LastName>
+<Login>Gosia</Login>
+<Password>warszawa</Password>
+</User>
 </Users>

@@ -1,5 +1,20 @@
 #include "MyBudget.h"
 
+void MyBudget::userChangePassword()
+{
+    userManager.changeUserPassword();
+}
+
+void MyBudget::userRegistration() {
+
+    userManager.registerUser();
+}
+
+void MyBudget::logIn(){
+
+userManager.logInUser();
+}
+
 char MyBudget::pickMenuOption() {
 
     system("cls");
@@ -13,15 +28,6 @@ char MyBudget::pickMenuOption() {
     pick = AuxilaryMethods::loadMark();
 
     return pick;
-}
-void MyBudget::userRegistration() {
-
-    userManager.registerUser();
-}
-
-void MyBudget::logIn(){
-
-userManager.logInUser();
 }
 
 char MyBudget::userMenu() {
@@ -88,14 +94,12 @@ void MyBudget::mainMenu() {
            //     usunAdresata();
                 break;
             case '6':
-           //     edytujAdresata();
+           userChangePassword();
                 break;
             case '7':
-           //     zmianaHaslaUzytkownika();
+                 //    wylogujUzytkownika();
                 break;
-            case '8':
-            //    wylogujUzytkownika();
-                break;
+
             }
         }
     }

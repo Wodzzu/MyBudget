@@ -14,6 +14,7 @@ class UserFile : public DBFile {
 
 public:
 
+void addChangedPasswordToFile(string newPassword, int loggedUserId);
 void addUserToFile(User user);
 vector <User> loadUsersFromFile();
 

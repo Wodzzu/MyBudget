@@ -60,5 +60,28 @@ else {
 }
 return users;
 
+}
 
+void UserFile::addChangedPasswordToFile(string newPassword, int loggedUserId){
+
+int idFromFile = 0;
+
+CMarkup xml;
+
+xml.Load(getFileName());
+if(isFileEmpty()){
+xml.FindElem();
+xml.IntoElem();
+while(xml.FindElem("User")){
+
+        xml.IntoElem();
+        xml.FindElem("UserId");
+        idFromFile = atoi(MCD_2PCSZ(xml.GetData()));
+        if(idFromFile==loggedUserId){
+            xml.FindElem("Password");
+            xml.SetData(newPassword);
+        }
+            xml.OutOfElem();
+}
+} xml.Save(getFileName());
 }

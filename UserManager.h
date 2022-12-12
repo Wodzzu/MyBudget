@@ -33,11 +33,11 @@ public:
     void registerUser();
     int logInUser();
     void logOutUser();
-    void changeUserPassword();
     void showAllData();
     bool ifLoginExists(string login);
     int getLoggedUserId();
     void setLoggedUserId(int newId);
+    void changeUserPassword();
 
 };
 #endif

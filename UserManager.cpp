@@ -122,3 +122,20 @@ void UserManager::setLoggedUserId(int newId){
 
 loggedUserId = newId;
 }
+
+void UserManager::changeUserPassword(){
+
+    string newPassword = "";
+    int loggedUserId = getLoggedUserId();
+    cout << "Write your new password: ";
+    newPassword = AuxilaryMethods::loadLine();
+
+    for (int i =0; i<users.size(); i++) {
+        if (users[i].getId() == loggedUserId) {
+            users[i].setPassword(newPassword);
+            cout << "Password has been changed." << endl << endl;
+            system("pause");
+        }
+    } userFile.addChangedPasswordToFile(newPassword,loggedUserId);
+
+}

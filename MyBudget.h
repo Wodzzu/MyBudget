@@ -21,6 +21,7 @@ char userMenu();
 char pickMenuOption();
 void userRegistration();
 void logIn();
+void userChangePassword();
 
 public:
     MyBudget(string userFileName,string incomeFileName, string expenseFileName)
