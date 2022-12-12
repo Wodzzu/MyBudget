@@ -4,7 +4,7 @@
 #include <vector>
 #include <cstdlib>
 
-
+#include "Income.h"
 #include "DBFile.h"
 
 using namespace std;
@@ -13,7 +13,7 @@ class IncomeFile : public DBFile {
 
 public:
 
-
+IncomeFile(string fileName) : DBFile(fileName){};
 
 
 

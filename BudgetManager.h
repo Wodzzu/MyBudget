@@ -1,16 +1,21 @@
 #include <iostream>
 
-#include "UserManager.h"
 #include "IncomeFile.h"
+#include "ExpenseFile.h"
+
 
 using namespace std;
 
-class MyBudget {
+class BudgetManager {
 
-const string INCOME_FILE_NAME;
-const string EXPENSE_FILE_NAME;
+IncomeFile incomeFile;
+ExpenseFile expenseFile;
 
+//const int LOGGED_USER_ID;
+vector <Expense> expenses;
+vector <Income> incomes;
 
 public:
-
+    BudgetManager(string incomeFileName,string expenseFileName) : incomeFile(incomeFileName), expenseFile(expenseFileName)
+    {};
 };
