@@ -11,11 +11,11 @@ class BudgetManager {
 IncomeFile incomeFile;
 ExpenseFile expenseFile;
 
-//const int LOGGED_USER_ID;
+const int LOGGED_USER_ID;
 vector <Expense> expenses;
 vector <Income> incomes;
 
 public:
-    BudgetManager(string incomeFileName,string expenseFileName) : incomeFile(incomeFileName), expenseFile(expenseFileName)
+    BudgetManager(string incomeFileName, string expenseFileName, int loggedUserId) : incomeFile(incomeFileName), expenseFile(expenseFileName), LOGGED_USER_ID(loggedUserId)
     {};
 };
