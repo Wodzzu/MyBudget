@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <cstdlib>
-
+#include "Expense.h"
 
 #include "DBFile.h"
 
@@ -13,7 +13,7 @@ class ExpenseFile : public DBFile {
 
 public:
 
-
+ExpenseFile(string fileName) : DBFile(fileName){};
 
 
 

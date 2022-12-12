@@ -1,18 +1,14 @@
 #include <iostream>
 
-#include "UserManager.h"
+#include "MyBudget.h"
 
 using namespace std;
 
 int main()
 {
-    cout << "Hello world!" << endl;
 
-    UserManager usermanager("users.xml");
-   usermanager.registerUser();
-  // usermanager.registerUser();
- // usermanager.loadUsersFromFile();
-   // usermanager.showAllData();
+    MyBudget myBudget("users.xml","incomes.xml","expences.xml");
+
 
 
 

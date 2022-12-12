@@ -29,7 +29,6 @@ public:
     {users = userFile.loadUsersFromFile();};
     void loadUsersFromFile();   //////////////////////////
   void registerUser();
- void addUserToFile(User user);
   int logInUser();
   void logOutUser();
   void changeUserPassword();
