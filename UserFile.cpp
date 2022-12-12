@@ -56,6 +56,7 @@ while(xml.FindElem("User")){
 else {
 
  cout << "I can not load the Users file."<< endl<<endl;
+ Sleep(1500);
 }
 return users;
 

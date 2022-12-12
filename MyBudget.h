@@ -16,7 +16,11 @@ const string EXPENSE_FILE_NAME;
 
 char pick;
 
+
+char userMenu();
+char pickMenuOption();
 void userRegistration();
+void logIn();
 
 public:
     MyBudget(string userFileName,string incomeFileName, string expenseFileName)
@@ -29,5 +33,4 @@ public:
     }
 
 void mainMenu();
-char pickMenuOption();
 };

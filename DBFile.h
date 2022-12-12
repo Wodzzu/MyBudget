@@ -2,6 +2,7 @@
 #define DBFile_H
 
 #include <iostream>
+#include <windows.h>
 
 #include "Markup.h"
 
