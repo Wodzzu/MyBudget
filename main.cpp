@@ -8,7 +8,7 @@ int main()
 {
 
     MyBudget myBudget("users.xml","incomes.xml","expences.xml");
-
+    myBudget.mainMenu();
 
 
 
