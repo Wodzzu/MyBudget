@@ -11,6 +11,13 @@ User UserManager::setNewUserData() {
     User user;
 
     user.setId(setNewUserId());
+string login;
+    do {
+
+    cout << "Set login please: "<<endl;
+    login = AuxilaryMethods::loadLine();
+    user.setLogin(login);
+    }while (ifLoginExists(login));
 
     string fName;
     cout << "Write your first name please: "<<endl;
@@ -22,10 +29,6 @@ User UserManager::setNewUserData() {
     lName = AuxilaryMethods::loadLine();
     user.setLastName(AuxilaryMethods::changeFirstLetterToCapital(lName));
 
-    string login;
-    cout << "Set login please: "<<endl;
-    login = AuxilaryMethods::loadLine();
-    user.setLogin(login);
 
     string password;
     cout << "Set password please: "<<endl;
@@ -35,21 +38,31 @@ User UserManager::setNewUserData() {
     return user;
 }
 
-void UserManager::registerUser(){
+bool UserManager::ifLoginExists(string login) {
 
-User user = setNewUserData();
+    for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++) {
 
-users.push_back(user);
+        if (itr -> getLogin() == login) {
+            cout << "Login is taken. Try Another One"<<endl;
+            Sleep(1500);
+            return true;
+        }
+    }
+    return false;
+}
+void UserManager::registerUser() {
 
-cout << endl << "Account registered" << endl << endl;
+    User user = setNewUserData();
+    userFile.addUserToFile(user);
+    users.push_back(user);
+
+    cout << endl << "Account registered" << endl << endl;
     system("pause");
 
 }
 
-void UserManager::showAllData()
-{
-    for (int i = 0; i<users.size(); i++)
-    {
+void UserManager::showAllData() {
+    for (int i = 0; i<users.size(); i++) {
         cout<<users[i].getId()<<endl;
         cout<<users[i].getFirstName()<<endl;
         cout<<users[i].getLastName()<<endl;
@@ -59,8 +72,9 @@ void UserManager::showAllData()
     system("pause");
 }
 
-int UserManager::logInUser()
-{
+
+
+int UserManager::logInUser() {
     User user;
     string login = "", password = "";
 
@@ -70,12 +84,11 @@ int UserManager::logInUser()
     for (int i = 0; i <users.size(); i++) {
         if (users[i].getLogin() == login) {
             for (int trialNumber = 3; trialNumber > 0; trialNumber--) {
-                    if(trialNumber > 1){
-                cout << "Write password. " << trialNumber << " trials left."<<endl;
-                    }
-                    else {
+                if(trialNumber > 1) {
+                    cout << "Write password. " << trialNumber << " trials left."<<endl;
+                } else {
                     cout << "Write password. " << trialNumber << " trial left."<<endl;
-                    }
+                }
                 password = AuxilaryMethods::loadLine();
 
                 if (users[i].getPassword() == password) {
@@ -94,5 +107,9 @@ int UserManager::logInUser()
     cout << "User with this login doesn't exist" << endl << endl;
     system("pause");
     return 0;
+}
+
+void UserManager::loadUsersFromFile() {
+    userFile.loadUsersFromFile();
 }
 

@@ -8,11 +8,11 @@ int main()
 {
     cout << "Hello world!" << endl;
 
-    UserManager usermanager;
-    usermanager.registerUser();
-   // usermanager.registerUser();
-    usermanager.showAllData();
-    usermanager.logInUser();
+    UserManager usermanager("users.xml");
+   usermanager.registerUser();
+  // usermanager.registerUser();
+ // usermanager.loadUsersFromFile();
+   // usermanager.showAllData();
 
 
 
