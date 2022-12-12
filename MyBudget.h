@@ -18,8 +18,12 @@ const string EXPENSE_FILE_NAME;
 
 public:
     MyBudget(string userFileName,string incomeFileName, string expenseFileName)
-    : userManager(userFileName), INCOME_FILE_NAME(incomeFileName), EXPENSE_FILE_NAME(expenseFileName)
+    : userManager(userFileName), INCOME_FILE_NAME(incomeFileName), EXPENSE_FILE_NAME(expenseFileName){
+    budgetManager = NULL;
 
-    {};
-
+    };
+~MyBudget() {
+        delete budgetManager;
+        budgetManager = NULL;
+    }
 };
