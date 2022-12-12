@@ -1,3 +1,6 @@
+#ifndef DBFile_H
+#define DBFile_H
+
 #include <iostream>
 
 #include "Markup.h"
@@ -16,3 +19,4 @@ class DBFile {
     string getFileName();
      bool isFileEmpty();
 };
+#endif
