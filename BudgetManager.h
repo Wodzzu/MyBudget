@@ -1,5 +1,8 @@
 #include <iostream>
+#include <ctime>
 
+
+#include "AuxilaryMethods.h"
 #include "IncomeFile.h"
 #include "ExpenseFile.h"
 
@@ -18,4 +21,7 @@ vector <Income> incomes;
 public:
     BudgetManager(string incomeFileName, string expenseFileName, int loggedUserId) : incomeFile(incomeFileName), expenseFile(expenseFileName), LOGGED_USER_ID(loggedUserId)
     {};
+
+string getTodayDate();
+void addIncome();
 };

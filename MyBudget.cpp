@@ -82,7 +82,7 @@ void MyBudget::mainMenu() {
 
             switch (pick) {
             case '1':
-//                dodajAdresata();
+            budgetManager->addIncome();
                 break;
             case '2':
           //      wyszukajAdresatowPoImieniu();

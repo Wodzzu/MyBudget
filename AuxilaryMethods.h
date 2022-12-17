@@ -1,15 +1,16 @@
-#ifndef MetodyPomocnicze_H
-#define MetodyPomocnicze_H
+#ifndef AuxilaryMethods_H
+#define AuxilaryMethods_H
 #include <iostream>
 #include <sstream>
 #include <algorithm>
+
 
 
 using namespace std;
 
 class AuxilaryMethods {
 public:
-    static string konwerjsaIntNaString(int liczba);
+    static string changeIntToString(int number);
     static char loadMark();
     static string loadLine();
     static int konwersjaStringNaInt(string liczba);

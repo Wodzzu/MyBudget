@@ -14,4 +14,11 @@
 <Login>Gosia</Login>
 <Password>warszawa</Password>
 </User>
+<User>
+<UserId>3</UserId>
+<FirstName>A</FirstName>
+<LastName>A</LastName>
+<Login>a</Login>
+<Password>a</Password>
+</User>
 </Users>

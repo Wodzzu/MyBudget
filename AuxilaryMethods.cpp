@@ -1,8 +1,8 @@
 #include "AuxilaryMethods.h"
 
-string AuxilaryMethods::konwerjsaIntNaString(int liczba) {
+string AuxilaryMethods::changeIntToString(int number) {
     ostringstream ss;
-    ss << liczba;
+    ss << number;
     string str = ss.str();
     return str;
 }
