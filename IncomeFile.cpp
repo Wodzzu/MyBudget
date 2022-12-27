@@ -20,7 +20,7 @@ xml.AddElem("Incomes");
     xml.AddElem("UserId", income.getUserId());
     xml.AddElem("IncomeDate", changeDateToString(income.getIncomeDate()));
     xml.AddElem("Item", income.getItem());
-    xml.AddElem("Amount", income.getAmount());
+    xml.AddElem("Amount", AuxilaryMethods::changeDoubleToString(income.getAmount()));
 
     xml.Save(getFileName());
 

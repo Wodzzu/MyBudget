@@ -15,6 +15,7 @@ string DBFile::changeDateToString(int dateNumber)
      return dateText;
 }
 
+
 bool DBFile::isFileEmpty(){
 
 CMarkup xml;

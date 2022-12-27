@@ -31,4 +31,5 @@ public:
 
 void registerIncome();
 void registerExpense();
+void showAllData();
 };

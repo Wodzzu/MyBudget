@@ -6,6 +6,12 @@ string AuxilaryMethods::changeIntToString(int number) {
     string str = ss.str();
     return str;
 }
+string AuxilaryMethods::changeDoubleToString(double number) {
+    ostringstream ss;
+    ss << number;
+    string str = ss.str();
+    return str;
+}
 
 char AuxilaryMethods::loadMark() {
     string enter = "";
@@ -35,7 +41,20 @@ int AuxilaryMethods::changeStringToInt(string number) {
 
     return numberInt;
 }
+double AuxilaryMethods::changeStringToDouble(string number) {
 
+
+    for (int i = 0; i < number.length(); i++)
+    {
+        if(number[i]==',')
+            number[i]='.';
+    }
+double numberDouble;
+    istringstream iss(number);
+    iss >> numberDouble;
+
+    return numberDouble;
+}
 string AuxilaryMethods::pobierzLiczbe(string tekst, int pozycjaZnaku) {
     string liczba = "";
     while(isdigit(tekst[pozycjaZnaku])) {
@@ -190,7 +209,7 @@ string userDate = date;
         system ("pause");
         return false;
     }
-    else if(userDate[4]!='-' && userDate[7]!='-') {
+    else if(userDate[4]!='-' || userDate[7]!='-') {
         cout<<"Wrong yyyy-mm-dd  format."<<endl;
         system ("pause");
         return false;

@@ -27,6 +27,8 @@ public:
        int howManyDaysInMonth(string enteredDate);
        static bool checkUserDate(string date);
        static int changeEnteredDateToNumber(string date);
+static string changeDoubleToString(double number);
+static double changeStringToDouble(string number);
 
     static string pobierzLiczbe(string tekst, int pozycjaZnaku);
     static int wczytajLiczbeCalkowita();

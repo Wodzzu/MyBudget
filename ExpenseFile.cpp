@@ -19,7 +19,7 @@ xml.AddElem("Expenses");
     xml.AddElem("UserId", expense.getUserId());
     xml.AddElem("ExpenseDate", changeDateToString(expense.getExpenseDate()));
     xml.AddElem("Item", expense.getItem());
-    xml.AddElem("Amount", expense.getAmount());
+    xml.AddElem("Amount", AuxilaryMethods::changeDoubleToString(expense.getAmount()));
 
     xml.Save(getFileName());
 

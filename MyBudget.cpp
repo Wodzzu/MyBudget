@@ -88,7 +88,7 @@ void MyBudget::mainMenu() {
           budgetManager->registerExpense();
                 break;
             case '3':
-           //     wyszukajAdresatowPoNazwisku();
+                budgetManager->showAllData();
                 break;
             case '4':
             //    wypiszWszystkichAdresatow();

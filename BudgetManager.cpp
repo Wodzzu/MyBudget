@@ -68,7 +68,7 @@ cout << "Write source of Income: "<<endl;
 income.setItem(AuxilaryMethods::loadLine());
 
 cout<<"Write amount of Income: "<<endl;
-income.setAmount(AuxilaryMethods::changeStringToInt(AuxilaryMethods::loadLine()));
+income.setAmount(AuxilaryMethods::changeStringToDouble(AuxilaryMethods::loadLine()));
 return income;
 
 
@@ -119,7 +119,7 @@ cout << "Write source of Expense: "<<endl;
 expense.setItem(AuxilaryMethods::loadLine());
 
 cout<<"Write amount of Expense: "<<endl;
-expense.setAmount(AuxilaryMethods::changeStringToInt(AuxilaryMethods::loadLine()));
+expense.setAmount(AuxilaryMethods::changeStringToDouble(AuxilaryMethods::loadLine()));
 return expense;
 
 
@@ -133,5 +133,16 @@ expenseFile.addExpenseToFile(expense);
 
 
 cout << endl << "Expense registered" << endl << endl;
+    system("pause");
+}
+
+void BudgetManager::showAllData() {
+    for (int i = 0; i<incomes.size(); i++) {
+        cout<<incomes[i].getIncomeId()<<endl;
+        cout<<incomes[i].getUserId()<<endl;
+        cout<<incomes[i].getIncomeDate()<<endl;
+        cout<<incomes[i].getItem()<<endl;
+        cout<<incomes[i].getAmount()<<endl;
+    }
     system("pause");
 }
