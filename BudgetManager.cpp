@@ -1,43 +1,80 @@
 #include "BudgetManager.h"
 
-string BudgetManager::getTodayDate(){
+int BudgetManager::setNewIncomeId() {
+    if (incomes.empty())
+        return 1;
+    else
+        return incomes.back().getIncomeId() + 1;
+}
+
+int BudgetManager::getTodayDate(){
 
  time_t today = time(0);
-int yearNumber,monthNumber,dayNumber;
-string yearText,monthText,dayText,dateText;
+int presentYearNumber,presentMonthNumber,presentDayNumber,presentDateNumber;
+string presentYearText,presentMonthText,presentDayText,presentDateText;
    tm *date = localtime(&today);
 
 
-   yearNumber = 1900 + date->tm_year;
-   monthNumber = date->tm_mon;
-   dayNumber = date->tm_mday;
-yearText = AuxilaryMethods::changeIntToString(yearNumber);
-monthText = AuxilaryMethods::changeIntToString(monthNumber);
-dayText = AuxilaryMethods::changeIntToString(dayNumber);
+   presentYearNumber = 1900 + date->tm_year;
+   presentMonthNumber = 1+date->tm_mon;
+   presentDayNumber = date->tm_mday;
+presentYearText = AuxilaryMethods::changeIntToString(presentYearNumber);
+presentMonthText = AuxilaryMethods::changeIntToString(presentMonthNumber);
+presentDayText = AuxilaryMethods::changeIntToString(presentDayNumber);
 
-dateText = yearText+'-'+monthText+'-'+dayText;
-return dateText;
+presentDateText = presentYearText+presentMonthText+presentDayText;
+presentDateNumber = AuxilaryMethods::changeStringToInt(presentDateText);
+return presentDateNumber;
 }
 
-void BudgetManager::addIncome(){
+Income BudgetManager::addNewIncomeData(){
 
 Income income;
 char pick ;
-string setDate;
+int setDate = 0;
+string userEnteredDate ="";
 
+income.setIncomeId(setNewIncomeId());
+
+income.setUserId(LOGGED_USER_ID);
 
 cout<<endl<< "Would you like to use present day or the previous one? "<<endl;
 cout<<"If yes press 'y' "<<endl;
 pick = AuxilaryMethods::loadMark();
-if (pick == 'y'||'Y')
+if ((pick == 'y') || pick == 'Y')
 {
     setDate = getTodayDate();
+    income.setIncomeDate(setDate);
+
 }
-else
+else{
+        do{
     cout<<endl<<"Write income date: In Order yyyy-mm-dd"<<endl;
-    setDate = AuxilaryMethods::loadLine();
+    userEnteredDate = AuxilaryMethods::loadLine();
+    }while(!(AuxilaryMethods::checkUserDate(userEnteredDate)));
+        setDate = AuxilaryMethods::changeEnteredDateToNumber(userEnteredDate);
+        income.setIncomeDate(setDate);
 
 
-system("pause");
+}
 
+cout << "Write source of Income: "<<endl;
+income.setItem(AuxilaryMethods::loadLine());
+
+cout<<"Write amount of Income: "<<endl;
+income.setAmount(AuxilaryMethods::changeStringToInt(AuxilaryMethods::loadLine()));
+return income;
+
+
+}
+
+void BudgetManager::registerIncome(){
+Income income;
+ income = addNewIncomeData();
+ incomes.push_back(income);
+incomeFile.addIncomeToFile(income);
+
+
+cout << endl << "Income registered" << endl << endl;
+    system("pause");
 }

@@ -3,8 +3,11 @@
 
 #include <iostream>
 #include <windows.h>
+#include <string>
+
 
 #include "Markup.h"
+#include "AuxilaryMethods.h"
 
 using namespace std;
 
@@ -19,5 +22,6 @@ class DBFile {
 
     string getFileName();
      bool isFileEmpty();
+     string changeDateToString (int dateNumber);
 };
 #endif

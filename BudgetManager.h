@@ -1,10 +1,11 @@
 #include <iostream>
-#include <ctime>
+
 
 
 #include "AuxilaryMethods.h"
 #include "IncomeFile.h"
 #include "ExpenseFile.h"
+
 
 
 using namespace std;
@@ -17,11 +18,15 @@ ExpenseFile expenseFile;
 const int LOGGED_USER_ID;
 vector <Expense> expenses;
 vector <Income> incomes;
+int setNewIncomeId();
+int getTodayDate();
+Income addNewIncomeData();
 
 public:
     BudgetManager(string incomeFileName, string expenseFileName, int loggedUserId) : incomeFile(incomeFileName), expenseFile(expenseFileName), LOGGED_USER_ID(loggedUserId)
     {};
 
-string getTodayDate();
-void addIncome();
+
+
+void registerIncome();
 };
