@@ -7,7 +7,7 @@ using namespace std;
 int main()
 {
 
-    MyBudget myBudget("users.xml","incomes.xml","expences.xml");
+    MyBudget myBudget("users.xml","incomes.xml","expenses.xml");
     myBudget.mainMenu();
 
 

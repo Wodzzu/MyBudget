@@ -21,7 +21,8 @@ vector <Income> incomes;
 int setNewIncomeId();
 int getTodayDate();
 Income addNewIncomeData();
-
+Expense addNewExpenseData();
+int setNewExpenseId();
 public:
     BudgetManager(string incomeFileName, string expenseFileName, int loggedUserId) : incomeFile(incomeFileName), expenseFile(expenseFileName), LOGGED_USER_ID(loggedUserId)
     {};
@@ -29,4 +30,5 @@ public:
 
 
 void registerIncome();
+void registerExpense();
 };

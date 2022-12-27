@@ -15,7 +15,7 @@ public:
 
 ExpenseFile(string fileName) : DBFile(fileName){};
 
-
+void addExpenseToFile(Expense expense);
 
 
 };

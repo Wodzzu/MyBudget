@@ -6,6 +6,12 @@ int BudgetManager::setNewIncomeId() {
     else
         return incomes.back().getIncomeId() + 1;
 }
+int BudgetManager::setNewExpenseId() {
+    if (expenses.empty())
+        return 1;
+    else
+        return expenses.back().getExpenseId() + 1;
+}
 
 int BudgetManager::getTodayDate(){
 
@@ -76,5 +82,56 @@ incomeFile.addIncomeToFile(income);
 
 
 cout << endl << "Income registered" << endl << endl;
+    system("pause");
+}
+Expense BudgetManager::addNewExpenseData(){
+
+Expense expense;
+char pick ;
+int setDate = 0;
+string userEnteredDate ="";
+
+expense.setExpenseId(setNewExpenseId());
+
+expense.setUserId(LOGGED_USER_ID);
+
+cout<<endl<< "Would you like to use present day or the previous one? "<<endl;
+cout<<"If yes press 'y' "<<endl;
+pick = AuxilaryMethods::loadMark();
+if ((pick == 'y') || pick == 'Y')
+{
+    setDate = getTodayDate();
+    expense.setExpenseDate(setDate);
+
+}
+else{
+        do{
+    cout<<endl<<"Write expense date: In Order yyyy-mm-dd"<<endl;
+    userEnteredDate = AuxilaryMethods::loadLine();
+    }while(!(AuxilaryMethods::checkUserDate(userEnteredDate)));
+        setDate = AuxilaryMethods::changeEnteredDateToNumber(userEnteredDate);
+        expense.setExpenseDate(setDate);
+
+
+}
+
+cout << "Write source of Expense: "<<endl;
+expense.setItem(AuxilaryMethods::loadLine());
+
+cout<<"Write amount of Expense: "<<endl;
+expense.setAmount(AuxilaryMethods::changeStringToInt(AuxilaryMethods::loadLine()));
+return expense;
+
+
+}
+
+void BudgetManager::registerExpense(){
+Expense expense;
+ expense = addNewExpenseData();
+ expenses.push_back(expense);
+expenseFile.addExpenseToFile(expense);
+
+
+cout << endl << "Expense registered" << endl << endl;
     system("pause");
 }
