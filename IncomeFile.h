@@ -17,6 +17,7 @@ public:
 IncomeFile(string fileName) : DBFile(fileName){};
 
 void addIncomeToFile(Income income);
+vector <Income> loadUserIncomes();
 
 
 };

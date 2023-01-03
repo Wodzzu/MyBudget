@@ -26,5 +26,43 @@ xml.AddElem("Incomes");
 
 }
 
+vector <Income> IncomeFile::loadUserIncomes(){
+
+
+CMarkup xml;
+Income income;
+vector <Income> incomes;
+xml.Load(getFileName());
+
+
+if(isFileEmpty()){
+xml.FindElem();
+xml.IntoElem();
+while(xml.FindElem("Income")){
+
+        xml.IntoElem();
+        xml.FindElem("IncomeId");
+        income.setIncomeId(atoi(MCD_2PCSZ(xml.GetData())));
+        xml.FindElem("UserId");
+       income.setUserId(atoi(MCD_2PCSZ(xml.GetData())));
+        xml.FindElem("IncomeDate");
+        income.setIncomeDate(DBFile::changeDateToInt(xml.GetData()));
+        xml.FindElem("Item");
+        income.setItem(xml.GetData());
+        xml.FindElem("Amount");
+       income.setAmount(atof(MCD_2PCSZ(xml.GetData())));
+             xml.OutOfElem();
+             incomes.push_back(income);
+}
+}
+else {
+
+ cout << "I can not load the incomes file."<< endl<<endl;
+ Sleep(1500);
+}
+return incomes;
+
+}
+
 
 

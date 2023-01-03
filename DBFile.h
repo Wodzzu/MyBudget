@@ -23,6 +23,7 @@ class DBFile {
     string getFileName();
      bool isFileEmpty();
      string changeDateToString (int dateNumber);
+     int changeDateToInt (string date);
 
 };
 #endif

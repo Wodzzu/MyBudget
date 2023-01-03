@@ -15,6 +15,15 @@ string DBFile::changeDateToString(int dateNumber)
      return dateText;
 }
 
+int DBFile::changeDateToInt(string date){
+
+int dateNumber;
+date.erase(4,1);
+date.erase(6,1);
+dateNumber = AuxilaryMethods::changeStringToInt(date);
+return dateNumber;
+
+}
 
 bool DBFile::isFileEmpty(){
 

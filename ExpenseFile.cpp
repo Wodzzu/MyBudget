@@ -25,5 +25,41 @@ xml.AddElem("Expenses");
 
 }
 
+vector <Expense> ExpenseFile::loadUserExpenses(){
 
+
+CMarkup xml;
+Expense expense;
+vector <Expense> expenses;
+xml.Load(getFileName());
+
+
+if(isFileEmpty()){
+xml.FindElem();
+xml.IntoElem();
+while(xml.FindElem("Expense")){
+
+        xml.IntoElem();
+        xml.FindElem("IncomeId");
+        expense.setExpenseId(atoi(MCD_2PCSZ(xml.GetData())));
+        xml.FindElem("UserId");
+       expense.setUserId(atoi(MCD_2PCSZ(xml.GetData())));
+        xml.FindElem("IncomeDate");
+        expense.setExpenseDate(DBFile::changeDateToInt(xml.GetData()));
+        xml.FindElem("Item");
+        expense.setItem(xml.GetData());
+        xml.FindElem("Amount");
+       expense.setAmount(atof(MCD_2PCSZ(xml.GetData())));
+             xml.OutOfElem();
+             expenses.push_back(expense);
+}
+}
+else {
+
+ cout << "I can not load the expenses file."<< endl<<endl;
+ Sleep(1500);
+}
+return expenses;
+
+}
 
