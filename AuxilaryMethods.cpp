@@ -205,7 +205,7 @@ AuxilaryMethods auxMethods;
 string userDate = date;
 
     if (userDate.length() !=10) {
-        cout<<"Wrong date format."<<endl;
+        cout<<"Wrong date format. You wrote to many or to low marks."<<endl;
         system ("pause");
         return false;
     }
@@ -218,8 +218,8 @@ string userDate = date;
 bool goodYear = auxMethods.checkYear(userDate);
 bool goodMonth = auxMethods.checkMonth(userDate);
 bool goodDay = auxMethods.checkDay(userDate);
-
-    if(goodYear && goodMonth && goodDay)
+bool goodDate = goodYear + goodMonth + goodDay;
+    if(goodDate)
         return true;
     }
 }

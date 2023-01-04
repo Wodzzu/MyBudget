@@ -1,5 +1,7 @@
 #include "BudgetManager.h"
 
+
+
 int BudgetManager::setNewIncomeId() {
     if (incomes.empty())
         return 1;
@@ -134,6 +136,22 @@ expenseFile.addExpenseToFile(expense);
 
 cout << endl << "Expense registered" << endl << endl;
     system("pause");
+}
+
+
+
+void BudgetManager::sortCashOperationByDate(){
+
+struct incomeOperator{
+   bool operator() ( Income &i1, Income &i2)
+{
+   return (i1.getIncomeDate() < i2.getIncomeDate());
+}
+
+};
+
+sort(incomes.begin(),incomes.end(),incomeOperator());
+
 }
 
 void BudgetManager::showAllData() {
