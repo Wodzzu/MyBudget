@@ -18,6 +18,14 @@ userManager.logInUser();
 
 }
 
+void MyBudget::logOut(){
+
+    userManager.setLoggedUserId(0);
+    delete budgetManager;
+    budgetManager = NULL;
+
+}
+
 char MyBudget::pickMenuOption() {
 
     system("cls");
@@ -100,7 +108,7 @@ void MyBudget::mainMenu() {
            userChangePassword();
                 break;
             case '7':
-                 //    wylogujUzytkownika();
+                   logOut();
                 break;
 
             }

@@ -22,6 +22,7 @@ char pickMenuOption();
 void userRegistration();
 void logIn();
 void userChangePassword();
+void logOut();
 
 public:
     MyBudget(string userFileName,string incomeFileName, string expenseFileName)

@@ -19,10 +19,10 @@ const int LOGGED_USER_ID;
 vector <Expense> expenses;
 vector <Income> incomes;
 int setNewIncomeId();
+int setNewExpenseId();
 int getTodayDate();
 Income addNewIncomeData();
 Expense addNewExpenseData();
-int setNewExpenseId();
 void sortCashOperationByDate();
 public:
     BudgetManager(string incomeFileName, string expenseFileName, int loggedUserId) : incomeFile(incomeFileName), expenseFile(expenseFileName), LOGGED_USER_ID(loggedUserId)

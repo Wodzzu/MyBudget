@@ -141,7 +141,6 @@ cout << endl << "Expense registered" << endl << endl;
     system("pause");
 }
 
-
 void BudgetManager::sortCashOperationByDate(){
 
 struct incomeOperator{
