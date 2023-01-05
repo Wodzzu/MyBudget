@@ -204,10 +204,55 @@ for(int i = 0;i<expenses.size();i++)
         runningMonthExpense= runningMonthExpense + expenses[i].getAmount();
     }
 }
-cout<<endl;<<"Incomes Total: "<< runningMonthIncome<<endl;
+cout<<endl<<"Incomes Total: "<< runningMonthIncome<<endl;
 cout<<"Expenses Total: "<< runningMonthExpense<<endl;
 cout<<"Balance: "<<runningMonthIncome-runningMonthExpense<<endl<<endl;
 system("pause");
 }
 
+void BudgetManager::previousMonthCashBalance(){
 
+int previousMonthDate = AuxilaryMethods::getPreviousMonthDate();
+string previousMonthDateText = AuxilaryMethods::changeIntToString(previousMonthDate);
+int maxPreviousMonthDays = AuxilaryMethods::howManyDaysInMonth(incomeFile.changeDateToString(previousMonthDate));
+string maxDaysInMonth = AuxilaryMethods::changeIntToString(maxPreviousMonthDays);
+string maxPreviousMonthDateText = previousMonthDateText.erase(6,2)+maxDaysInMonth;
+int previousMonthDateMaxNumberOfDays = AuxilaryMethods::changeStringToInt(maxPreviousMonthDateText);
+
+
+
+double previousMonthIncome=0,previousMonthExpense=0;
+
+
+cout<<endl<<"*****Previous Month Cash Balance*****"<<endl;
+
+cout<<endl<<"Incomes: "<<endl;
+
+sortCashOperationByDate();
+
+for(int i = 0;i<incomes.size();i++)
+{
+    if(incomes[i].getUserId()==LOGGED_USER_ID && incomes[i].getIncomeDate()>=previousMonthDate && incomes[i].getIncomeDate()<=previousMonthDateMaxNumberOfDays ){
+    cout<<"Id :"<<incomes[i].getIncomeId()<<" - Date: "<<incomes[i].getIncomeDate()<<" - Item: "<<incomes[i].getItem()<<" - Amount: "<<incomes[i].getAmount()<<endl;
+
+        previousMonthIncome= previousMonthIncome + incomes[i].getAmount();
+    }
+}
+cout<<endl<<"Expenses: "<<endl;
+
+for(int i = 0;i<expenses.size();i++)
+{
+    if(expenses[i].getUserId()==LOGGED_USER_ID && expenses[i].getExpenseDate()>=previousMonthDate && expenses[i].getExpenseDate()<=previousMonthDateMaxNumberOfDays ){
+    cout<<"Id :"<<expenses[i].getExpenseId()<<" - Date: "<<expenses[i].getExpenseDate()<<" - Item: "<<expenses[i].getItem()<<" - Amount: "<<expenses[i].getAmount()<<endl;
+
+        previousMonthExpense= previousMonthExpense + expenses[i].getAmount();
+    }
+}
+cout<<endl<<"Incomes Total: "<< previousMonthIncome<<endl;
+cout<<"Expenses Total: "<< previousMonthExpense<<endl;
+cout<<"Balance: "<<previousMonthIncome-previousMonthExpense<<endl<<endl;
+system("pause");
+
+
+
+}

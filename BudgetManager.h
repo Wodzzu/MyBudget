@@ -30,6 +30,7 @@ public:
 
 
 void runningMonthCashBalance();
+void previousMonthCashBalance();
 void registerIncome();
 void registerExpense();
 void showAllData();

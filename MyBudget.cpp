@@ -91,7 +91,7 @@ void MyBudget::mainMenu() {
                 budgetManager->runningMonthCashBalance();
                 break;
             case '4':
-            //    wypiszWszystkichAdresatow();
+            budgetManager->previousMonthCashBalance();
                 break;
             case '5':
            //     usunAdresata();

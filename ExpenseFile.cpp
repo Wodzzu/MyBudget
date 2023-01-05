@@ -40,11 +40,11 @@ xml.IntoElem();
 while(xml.FindElem("Expense")){
 
         xml.IntoElem();
-        xml.FindElem("IncomeId");
+        xml.FindElem("ExpenseId");
         expense.setExpenseId(atoi(MCD_2PCSZ(xml.GetData())));
         xml.FindElem("UserId");
        expense.setUserId(atoi(MCD_2PCSZ(xml.GetData())));
-        xml.FindElem("IncomeDate");
+        xml.FindElem("ExpenseDate");
         expense.setExpenseDate(DBFile::changeDateToInt(xml.GetData()));
         xml.FindElem("Item");
         expense.setItem(xml.GetData());
