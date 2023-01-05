@@ -34,5 +34,6 @@ void previousMonthCashBalance();
 void registerIncome();
 void registerExpense();
 void showAllData();
+void periodCashBalance();
 
 };

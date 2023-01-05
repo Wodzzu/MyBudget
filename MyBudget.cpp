@@ -94,7 +94,7 @@ void MyBudget::mainMenu() {
             budgetManager->previousMonthCashBalance();
                 break;
             case '5':
-           //     usunAdresata();
+           budgetManager->periodCashBalance();
                 break;
             case '6':
            userChangePassword();

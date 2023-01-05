@@ -253,6 +253,63 @@ cout<<"Expenses Total: "<< previousMonthExpense<<endl;
 cout<<"Balance: "<<previousMonthIncome-previousMonthExpense<<endl<<endl;
 system("pause");
 
+}
 
+void BudgetManager::periodCashBalance(){
+
+string firstDateText,secondDateText;
+int firstDateNumber,secondDateNumber;
+double previousMonthIncome=0,previousMonthExpense=0;
+
+do{
+cout <<"Write first date in order yyyy-mm-dd: "<<endl;
+firstDateText = AuxilaryMethods::loadLine();
+}while(!AuxilaryMethods::checkUserDate(firstDateText));
+do{
+cout <<"Write second date in order yyyy-mm-dd: "<<endl;
+secondDateText = AuxilaryMethods::loadLine();
+}while(!AuxilaryMethods::checkUserDate(secondDateText));
+
+firstDateNumber = AuxilaryMethods::changeEnteredDateToNumber(firstDateText);
+secondDateNumber = AuxilaryMethods::changeEnteredDateToNumber(secondDateText);
+
+if(firstDateNumber>secondDateNumber){
+
+    int swapDate;
+    swapDate = firstDateNumber;
+    firstDateNumber = secondDateNumber;
+    secondDateNumber = swapDate;
+}
+
+
+cout<<endl<<"*****Period Cash Balance*****"<<endl;
+
+cout<<endl<<"Incomes: "<<endl;
+
+sortCashOperationByDate();
+
+for(int i = 0;i<incomes.size();i++)
+{
+    if(incomes[i].getUserId()==LOGGED_USER_ID && incomes[i].getIncomeDate()>=firstDateNumber && incomes[i].getIncomeDate()<=secondDateNumber ){
+    cout<<"Id :"<<incomes[i].getIncomeId()<<" - Date: "<<incomes[i].getIncomeDate()<<" - Item: "<<incomes[i].getItem()<<" - Amount: "<<incomes[i].getAmount()<<endl;
+
+        previousMonthIncome= previousMonthIncome + incomes[i].getAmount();
+    }
+}
+cout<<endl<<"Expenses: "<<endl;
+
+for(int i = 0;i<expenses.size();i++)
+{
+    if(expenses[i].getUserId()==LOGGED_USER_ID && expenses[i].getExpenseDate()>=firstDateNumber && expenses[i].getExpenseDate()<=secondDateNumber ){
+    cout<<"Id :"<<expenses[i].getExpenseId()<<" - Date: "<<expenses[i].getExpenseDate()<<" - Item: "<<expenses[i].getItem()<<" - Amount: "<<expenses[i].getAmount()<<endl;
+
+        previousMonthExpense= previousMonthExpense + expenses[i].getAmount();
+    }
+}
+cout<<endl<<"Incomes Total: "<< previousMonthIncome<<endl;
+cout<<"Expenses Total: "<< previousMonthExpense<<endl;
+cout<<"Balance: "<<previousMonthIncome-previousMonthExpense<<endl<<endl;
+system("pause");
 
 }
+
