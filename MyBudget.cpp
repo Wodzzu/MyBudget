@@ -1,5 +1,31 @@
 #include "MyBudget.h"
 
+void MyBudget::userChangePassword()
+{
+    userManager.changeUserPassword();
+}
+
+void MyBudget::userRegistration() {
+
+userManager.registerUser();
+}
+
+void MyBudget::logIn(){
+
+userManager.logInUser();
+
+ budgetManager = new BudgetManager(INCOME_FILE_NAME,EXPENSE_FILE_NAME,userManager.getLoggedUserId());
+
+}
+
+void MyBudget::logOut(){
+
+    userManager.setLoggedUserId(0);
+    delete budgetManager;
+    budgetManager = NULL;
+
+}
+
 char MyBudget::pickMenuOption() {
 
     system("cls");
@@ -13,15 +39,6 @@ char MyBudget::pickMenuOption() {
     pick = AuxilaryMethods::loadMark();
 
     return pick;
-}
-void MyBudget::userRegistration() {
-
-    userManager.registerUser();
-}
-
-void MyBudget::logIn(){
-
-userManager.logInUser();
 }
 
 char MyBudget::userMenu() {
@@ -73,29 +90,28 @@ void MyBudget::mainMenu() {
 
             switch (pick) {
             case '1':
-//                dodajAdresata();
+          budgetManager->registerIncome();
                 break;
             case '2':
-          //      wyszukajAdresatowPoImieniu();
+          budgetManager->registerExpense();
                 break;
             case '3':
-           //     wyszukajAdresatowPoNazwisku();
+                budgetManager->runningMonthCashBalance();
                 break;
             case '4':
-            //    wypiszWszystkichAdresatow();
+            budgetManager->previousMonthCashBalance();
                 break;
             case '5':
-           //     usunAdresata();
+           //budgetManager->periodCashBalance();
+            budgetManager->showAllData();
                 break;
             case '6':
-           //     edytujAdresata();
+           userChangePassword();
                 break;
             case '7':
-           //     zmianaHaslaUzytkownika();
+                   logOut();
                 break;
-            case '8':
-            //    wylogujUzytkownika();
-                break;
+
             }
         }
     }

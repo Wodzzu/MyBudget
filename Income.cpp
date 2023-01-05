@@ -12,7 +12,7 @@
     }
     void Income::setIncomeDate(int newIncomeDate){
 
-        if(incomeDate>0)
+        if(newIncomeDate>0)
         incomeDate = newIncomeDate;
     }
     void Income::setItem(string newItem){

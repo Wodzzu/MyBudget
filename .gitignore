@@ -4,3 +4,5 @@ MyBudget.cbp
 MyBudget.layout
 MyBudget.depend
 users.xml
+incomes.xml
+expenses.xml

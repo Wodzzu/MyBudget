@@ -3,8 +3,7 @@
 
 #include <iostream>
 #include <vector>
-//#include <windows.h>
-//#include <fstream>
+
 
 #include "Markup.h"
 #include "User.h"
@@ -33,11 +32,11 @@ public:
     void registerUser();
     int logInUser();
     void logOutUser();
-    void changeUserPassword();
     void showAllData();
     bool ifLoginExists(string login);
     int getLoggedUserId();
     void setLoggedUserId(int newId);
+    void changeUserPassword();
 
 };
 #endif

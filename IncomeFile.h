@@ -11,11 +11,13 @@ using namespace std;
 
 class IncomeFile : public DBFile {
 
+
 public:
 
 IncomeFile(string fileName) : DBFile(fileName){};
 
-
+void addIncomeToFile(Income income);
+vector <Income> loadUserIncomes(int loggedUserId);
 
 
 };

@@ -12,7 +12,7 @@
     }
     void Expense::setExpenseDate(int newExpenseDate){
 
-        if(expenseDate>0)
+        if(newExpenseDate>0)
         expenseDate = newExpenseDate;
     }
     void Expense::setItem(string newItem){
