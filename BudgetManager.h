@@ -26,7 +26,7 @@ Expense addNewExpenseData();
 void sortCashOperationByDate();
 public:
     BudgetManager(string incomeFileName, string expenseFileName, int loggedUserId) : incomeFile(incomeFileName), expenseFile(expenseFileName), LOGGED_USER_ID(loggedUserId)
-    {incomes = incomeFile.loadUserIncomes();expenses = expenseFile.loadUserExpenses();};
+    {incomes = incomeFile.loadUserIncomes(LOGGED_USER_ID);expenses = expenseFile.loadUserExpenses(LOGGED_USER_ID);};
 
 
 void runningMonthCashBalance();

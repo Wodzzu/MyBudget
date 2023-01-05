@@ -35,4 +35,11 @@
 <Login>c</Login>
 <Password>c</Password>
 </User>
+<User>
+<UserId>6</UserId>
+<FirstName>B</FirstName>
+<LastName>B</LastName>
+<Login>b</Login>
+<Password>b</Password>
+</User>
 </Users>

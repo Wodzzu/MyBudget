@@ -25,24 +25,30 @@ xml.AddElem("Expenses");
 
 }
 
-vector <Expense> ExpenseFile::loadUserExpenses(){
+vector <Expense> ExpenseFile::loadUserExpenses(int loggedUserId){
 
 
 CMarkup xml;
 Expense expense;
 vector <Expense> expenses;
 xml.Load(getFileName());
-
+int idFromFile = 0;
 
 if(isFileEmpty()){
 xml.FindElem();
 xml.IntoElem();
 while(xml.FindElem("Expense")){
 
+
+
+
+
         xml.IntoElem();
         xml.FindElem("ExpenseId");
         expense.setExpenseId(atoi(MCD_2PCSZ(xml.GetData())));
         xml.FindElem("UserId");
+         idFromFile = atoi(MCD_2PCSZ(xml.GetData()));
+            if(idFromFile == loggedUserId) {
        expense.setUserId(atoi(MCD_2PCSZ(xml.GetData())));
         xml.FindElem("ExpenseDate");
         expense.setExpenseDate(DBFile::changeDateToInt(xml.GetData()));
@@ -52,8 +58,11 @@ while(xml.FindElem("Expense")){
        expense.setAmount(atof(MCD_2PCSZ(xml.GetData())));
              xml.OutOfElem();
              expenses.push_back(expense);
+             } else
+                xml.OutOfElem();
+        }
 }
-}
+
 else {
 
  cout << "I can not load the expenses file."<< endl<<endl;
