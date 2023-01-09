@@ -44,6 +44,7 @@ Income income;
 char pick ;
 int setDate = 0;
 string userEnteredDate ="";
+double amount = 0;
 
 income.setIncomeId(setNewIncomeId());
 
@@ -71,9 +72,15 @@ else{
 
 cout << "Write source of Income: "<<endl;
 income.setItem(AuxilaryMethods::loadLine());
-
+do{
 cout<<"Write amount of Income: "<<endl;
-income.setAmount(AuxilaryMethods::changeStringToDouble(AuxilaryMethods::loadLine()));
+amount = AuxilaryMethods::changeStringToDouble(AuxilaryMethods::loadLine());
+if(amount > 0)
+income.setAmount(amount);
+else{
+    cout<< "You entered wrong amount. Try agian"<<endl;
+}
+}while(amount <= 0);
 return income;
 
 
@@ -95,6 +102,7 @@ Expense expense;
 char pick ;
 int setDate = 0;
 string userEnteredDate ="";
+double amount;
 
 expense.setExpenseId(setNewExpenseId());
 
@@ -122,9 +130,15 @@ else{
 
 cout << "Write source of Expense: "<<endl;
 expense.setItem(AuxilaryMethods::loadLine());
-
+do{
 cout<<"Write amount of Expense: "<<endl;
-expense.setAmount(AuxilaryMethods::changeStringToDouble(AuxilaryMethods::loadLine()));
+amount = AuxilaryMethods::changeStringToDouble(AuxilaryMethods::loadLine());
+if(amount > 0)
+expense.setAmount(amount);
+else{
+    cout<< "You entered wrong amount. Try agian"<<endl;
+}
+}while(amount <= 0);
 return expense;
 
 
@@ -261,11 +275,11 @@ int firstDateNumber,secondDateNumber;
 double previousMonthIncome=0,previousMonthExpense=0;
 
 do{
-cout <<"Write first date in order yyyy-mm-dd: "<<endl;
+cout <<"Enter first date in order yyyy-mm-dd: "<<endl;
 firstDateText = AuxilaryMethods::loadLine();
 }while(!AuxilaryMethods::checkUserDate(firstDateText));
 do{
-cout <<"Write second date in order yyyy-mm-dd: "<<endl;
+cout <<"Enter second date in order yyyy-mm-dd: "<<endl;
 secondDateText = AuxilaryMethods::loadLine();
 }while(!AuxilaryMethods::checkUserDate(secondDateText));
 
