@@ -78,37 +78,42 @@ int AuxilaryMethods::howManyDaysInMonth(string enteredDate) {
 
     userMonthNumber = changeStringToInt(userMonth);
 
-    switch(userMonthNumber) {
-    case 1:
-    case 3:
-    case 5:
-    case 7:
-    case 8:
-    case 10:
-    case 12:
-        return 31;
+    if(userMonthNumber>0&&userMonthNumber<13) {
+
+        switch(userMonthNumber) {
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
+            return 31;
+            break;
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            return 30;
+            break;
+        case 2: {
+            if(((userYearNumber%4==0)&&(userYearNumber%100!=0))||(userYearNumber%400==0))
+                return 29;
+            else
+                return 28;
+        }
         break;
-    case 4:
-    case 6:
-    case 9:
-    case 11:
-        return 30;
-        break;
-    case 2: {
-        if(((userYearNumber%4==0)&&(userYearNumber%100!=0))||(userYearNumber%400==0))
-            return 29;
-        else
-            return 28;
-    }
-    break;
 
-
-    }
-
+        }
+    } else
+        return 0;
 }
 
 
 bool AuxilaryMethods::checkYear(string date) {
+
+time_t today = time(0);
+    tm *todayDate = localtime(&today);
 
     string userYear;
     int presentYear,userYearNumber;
@@ -130,14 +135,12 @@ bool AuxilaryMethods::checkYear(string date) {
 bool AuxilaryMethods::checkMonth(string date) {
 
     string userMonth;
-    int presentMonth, userMonthNumber;
+    int userMonthNumber;
 
     date.erase(0,5);
     date.erase(2,3);
 
     userMonthNumber = changeStringToInt(date);
-
-    presentMonth = 1+ todayDate->tm_mon;
 
     if(userMonthNumber>0 && userMonthNumber <=12)
         return true;
@@ -151,14 +154,12 @@ bool AuxilaryMethods::checkMonth(string date) {
 bool AuxilaryMethods::checkDay(string date) {
 
     string userDay;
-    int presentDay, userDayNumber;
+    int maxMonthDays = 0,userDayNumber;
 
-    int maxMonthDays = howManyDaysInMonth(date);
+    maxMonthDays = howManyDaysInMonth(date);
 
     date.erase(0,8);
     userDayNumber = changeStringToInt(date);
-
-    presentDay = todayDate->tm_mday;
 
     if(userDayNumber>0 && userDayNumber<=maxMonthDays)
         return true;
@@ -174,6 +175,7 @@ bool AuxilaryMethods::checkUserDate (string date) {
 
     AuxilaryMethods auxMethods;
     string userDate = date;
+    bool goodYear,goodMonth,goodDay,goodDate;
 
     if (userDate.length() !=10) {
         cout<<"Wrong date format. You wrote to many or to low marks."<<endl;
@@ -184,12 +186,14 @@ bool AuxilaryMethods::checkUserDate (string date) {
         system ("pause");
         return false;
     } else {
-        bool goodYear = auxMethods.checkYear(userDate);
-        bool goodMonth = auxMethods.checkMonth(userDate);
-        bool goodDay = auxMethods.checkDay(userDate);
-        bool goodDate = goodYear + goodMonth + goodDay;
-        if(goodDate)
+        goodYear = auxMethods.checkYear(userDate);
+        goodMonth = auxMethods.checkMonth(userDate);
+        goodDay = auxMethods.checkDay(userDate);
+
+        if(goodYear&&goodMonth&&goodDay)
             return true;
+        else
+            return false;
     }
 }
 
@@ -213,7 +217,7 @@ int AuxilaryMethods::changeEnteredDateToNumber(string date) {
 
 int AuxilaryMethods::getPreviousMonthDate() {
 
-time_t today = time(0);
+    time_t today = time(0);
     tm *todayDate = localtime(&today);
 
     int presentMonth,previousMonth,previousMonthYear,previousMonthDateNumber;
@@ -225,7 +229,6 @@ time_t today = time(0);
     previousMonthYear = 1900 + todayDate->tm_year;
 
     previousMonthFirstDayText = "01";
-
 
     if(previousMonth == 0) {
         previousMonth = 12;

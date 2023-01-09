@@ -14,11 +14,11 @@ class UserFile : public DBFile {
 
 public:
 
-void addChangedPasswordToFile(string newPassword, int loggedUserId);
-void addUserToFile(User user);
-vector <User> loadUsersFromFile();
+    void addChangedPasswordToFile(string newPassword, int loggedUserId);
+    void addUserToFile(User user);
+    vector <User> loadUsersFromFile();
 
-UserFile(string UserFileName) : DBFile(UserFileName) {
+    UserFile(string UserFileName) : DBFile(UserFileName) {
     };
 
 

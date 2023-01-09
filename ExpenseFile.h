@@ -13,10 +13,10 @@ class ExpenseFile : public DBFile {
 
 public:
 
-ExpenseFile(string fileName) : DBFile(fileName){};
+    ExpenseFile(string expenseFileName) : DBFile(expenseFileName) {};
 
-void addExpenseToFile(Expense expense);
-vector <Expense> loadUserExpenses(int loggedUserId);
+    void addExpenseToFile(Expense expense);
+    vector <Expense> loadUserExpenses(int loggedUserId);
 
 
 };

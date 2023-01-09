@@ -4,14 +4,10 @@
 
 using namespace std;
 
-int main()
-{
+int main() {
 
     MyBudget myBudget("users.xml","incomes.xml","expenses.xml");
     myBudget.mainMenu();
-
-
-
 
     return 0;
 }

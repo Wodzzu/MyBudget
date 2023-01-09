@@ -8,31 +8,30 @@ using namespace std;
 
 class MyBudget {
 
-UserManager userManager;
-BudgetManager *budgetManager;
+    UserManager userManager;
+    BudgetManager *budgetManager;
 
-const string INCOME_FILE_NAME;
-const string EXPENSE_FILE_NAME;
+    const string INCOME_FILE_NAME;
+    const string EXPENSE_FILE_NAME;
 
-char pick;
+    char pick;
 
-
-char userMenu();
-char pickMenuOption();
-void userRegistration();
-void logIn();
-void userChangePassword();
-void logOut();
+    char userMenu();
+    char pickMenuOption();
+    void userRegistration();
+    void logIn();
+    void userChangePassword();
+    void logOut();
 
 public:
     MyBudget(string userFileName,string incomeFileName, string expenseFileName)
-    : userManager(userFileName), INCOME_FILE_NAME(incomeFileName), EXPENSE_FILE_NAME(expenseFileName){
-    budgetManager = NULL;
+        : userManager(userFileName), INCOME_FILE_NAME(incomeFileName), EXPENSE_FILE_NAME(expenseFileName) {
+        budgetManager = NULL;
     };
-~MyBudget() {
+    ~MyBudget() {
         delete budgetManager;
         budgetManager = NULL;
     }
 
-void mainMenu();
+    void mainMenu();
 };

@@ -1,16 +1,16 @@
 #include "UserFile.h"
 
 
-void UserFile::addUserToFile(User user){
+void UserFile::addUserToFile(User user) {
 
-CMarkup xml;
+    CMarkup xml;
 
-xml.Load(getFileName());
+    xml.Load(getFileName());
 
-if(!isFileEmpty()){
-xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
-xml.AddElem("Users");
-}
+    if(!isFileEmpty()) {
+        xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
+        xml.AddElem("Users");
+    }
     xml.FindElem();
     xml.IntoElem();
     xml.AddElem("User");
@@ -25,63 +25,62 @@ xml.AddElem("Users");
 
 }
 
-vector <User> UserFile::loadUsersFromFile(){
+vector <User> UserFile::loadUsersFromFile() {
 
-CMarkup xml;
-User user;
-vector <User> users;
-xml.Load(getFileName());
+    CMarkup xml;
+    User user;
+    vector <User> users;
+    xml.Load(getFileName());
 
-
-if(isFileEmpty()){
-xml.FindElem();
-xml.IntoElem();
-while(xml.FindElem("User")){
-
+    if(isFileEmpty()) {
+        xml.FindElem();
         xml.IntoElem();
-        xml.FindElem("UserId");
-        user.setId(atoi(MCD_2PCSZ(xml.GetData())));
-        xml.FindElem("FirstName");
-        user.setFirstName(xml.GetData());
-        xml.FindElem("LastName");
-        user.setLastName(xml.GetData());
-        xml.FindElem("Login");
-        user.setLogin(xml.GetData());
-        xml.FindElem("Password");
-        user.setPassword(xml.GetData());
-             xml.OutOfElem();
-             users.push_back(user);
-}
-}
-else {
+        while(xml.FindElem("User")) {
 
- cout << "I can not load the Users file."<< endl<<endl;
- Sleep(1500);
-}
-return users;
-
-}
-
-void UserFile::addChangedPasswordToFile(string newPassword, int loggedUserId){
-
-int idFromFile = 0;
-
-CMarkup xml;
-
-xml.Load(getFileName());
-if(isFileEmpty()){
-xml.FindElem();
-xml.IntoElem();
-while(xml.FindElem("User")){
-
-        xml.IntoElem();
-        xml.FindElem("UserId");
-        idFromFile = atoi(MCD_2PCSZ(xml.GetData()));
-        if(idFromFile==loggedUserId){
+            xml.IntoElem();
+            xml.FindElem("UserId");
+            user.setId(atoi(MCD_2PCSZ(xml.GetData())));
+            xml.FindElem("FirstName");
+            user.setFirstName(xml.GetData());
+            xml.FindElem("LastName");
+            user.setLastName(xml.GetData());
+            xml.FindElem("Login");
+            user.setLogin(xml.GetData());
             xml.FindElem("Password");
-            xml.SetData(newPassword);
-        }
+            user.setPassword(xml.GetData());
             xml.OutOfElem();
+            users.push_back(user);
+        }
+    } else {
+
+        cout << "I can not load the Users file."<< endl<<endl;
+        Sleep(1500);
+    }
+    return users;
+
 }
-} xml.Save(getFileName());
+
+void UserFile::addChangedPasswordToFile(string newPassword, int loggedUserId) {
+
+    int idFromFile = 0;
+
+    CMarkup xml;
+
+    xml.Load(getFileName());
+    if(isFileEmpty()) {
+        xml.FindElem();
+        xml.IntoElem();
+        while(xml.FindElem("User")) {
+
+            xml.IntoElem();
+            xml.FindElem("UserId");
+            idFromFile = atoi(MCD_2PCSZ(xml.GetData()));
+            if(idFromFile==loggedUserId) {
+                xml.FindElem("Password");
+                xml.SetData(newPassword);
+            }
+            xml.OutOfElem();
+        }
+    }
+    xml.Save(getFileName());
 }

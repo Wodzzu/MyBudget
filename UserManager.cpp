@@ -11,13 +11,13 @@ User UserManager::setNewUserData() {
     User user;
 
     user.setId(setNewUserId());
-string login;
+    string login;
     do {
 
-    cout << "Set login please: "<<endl;
-    login = AuxilaryMethods::loadLine();
-    user.setLogin(login);
-    }while (ifLoginExists(login));
+        cout << "Set login please: "<<endl;
+        login = AuxilaryMethods::loadLine();
+        user.setLogin(login);
+    } while (ifLoginExists(login));
 
     string fName;
     cout << "Write your first name please: "<<endl;
@@ -61,19 +61,6 @@ void UserManager::registerUser() {
 
 }
 
-void UserManager::showAllData() {
-    for (int i = 0; i<users.size(); i++) {
-        cout<<users[i].getId()<<endl;
-        cout<<users[i].getFirstName()<<endl;
-        cout<<users[i].getLastName()<<endl;
-        cout<<users[i].getLogin()<<endl;
-        cout<<users[i].getPassword()<<endl;
-    }
-    system("pause");
-}
-
-
-
 int UserManager::logInUser() {
     User user;
     string login = "", password = "";
@@ -113,17 +100,17 @@ void UserManager::loadUsersFromFile() {
     userFile.loadUsersFromFile();
 }
 
-int UserManager::getLoggedUserId(){
+int UserManager::getLoggedUserId() {
 
-return loggedUserId;
+    return loggedUserId;
 }
 
-void UserManager::setLoggedUserId(int newId){
+void UserManager::setLoggedUserId(int newId) {
 
-loggedUserId = newId;
+    loggedUserId = newId;
 }
 
-void UserManager::changeUserPassword(){
+void UserManager::changeUserPassword() {
 
     string newPassword = "";
     int loggedUserId = getLoggedUserId();
@@ -136,6 +123,6 @@ void UserManager::changeUserPassword(){
             cout << "Password has been changed." << endl << endl;
             system("pause");
         }
-    } userFile.addChangedPasswordToFile(newPassword,loggedUserId);
-
+    }
+    userFile.addChangedPasswordToFile(newPassword,loggedUserId);
 }
