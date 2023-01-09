@@ -139,7 +139,7 @@ bool AuxilaryMethods::checkMonth(string date) {
 
     presentMonth = 1+ todayDate->tm_mon;
 
-    if(userMonthNumber>0 && userMonthNumber <=12)
+    if(userMonthNumber>0 && userMonthNumber <=presentMonth)
         return true;
     else {
         cout<<"You wrote wrong month.Try agian."<<endl;
@@ -151,14 +151,13 @@ bool AuxilaryMethods::checkMonth(string date) {
 bool AuxilaryMethods::checkDay(string date) {
 
     string userDay;
-    int presentDay, userDayNumber;
+    int userDayNumber;
 
     int maxMonthDays = howManyDaysInMonth(date);
 
     date.erase(0,8);
     userDayNumber = changeStringToInt(date);
 
-    presentDay = todayDate->tm_mday;
 
     if(userDayNumber>0 && userDayNumber<=maxMonthDays)
         return true;
@@ -174,6 +173,7 @@ bool AuxilaryMethods::checkUserDate (string date) {
 
     AuxilaryMethods auxMethods;
     string userDate = date;
+    bool goodYear,goodMonth,goodDay,goodDate;
 
     if (userDate.length() !=10) {
         cout<<"Wrong date format. You wrote to many or to low marks."<<endl;
@@ -184,12 +184,17 @@ bool AuxilaryMethods::checkUserDate (string date) {
         system ("pause");
         return false;
     } else {
-        bool goodYear = auxMethods.checkYear(userDate);
-        bool goodMonth = auxMethods.checkMonth(userDate);
-        bool goodDay = auxMethods.checkDay(userDate);
-        bool goodDate = goodYear + goodMonth + goodDay;
-        if(goodDate)
+        goodYear = auxMethods.checkYear(userDate);
+        if(goodYear) {
+            goodMonth = auxMethods.checkMonth(userDate);
+        }
+        if(goodMonth) {
+            goodDay = auxMethods.checkDay(userDate);
+        }
+        if(goodDay)
             return true;
+        else
+            return false;
     }
 }
 
@@ -213,7 +218,7 @@ int AuxilaryMethods::changeEnteredDateToNumber(string date) {
 
 int AuxilaryMethods::getPreviousMonthDate() {
 
-time_t today = time(0);
+    time_t today = time(0);
     tm *todayDate = localtime(&today);
 
     int presentMonth,previousMonth,previousMonthYear,previousMonthDateNumber;
