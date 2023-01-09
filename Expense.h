@@ -1,15 +1,14 @@
 #include <iostream>
 
-
 using namespace std;
 
 class Expense {
 
-int expenseId;
-int userId;
-int expenseDate;
-string item;
-double amount;
+    int expenseId;
+    int userId;
+    int expenseDate;
+    string item;
+    double amount;
 
 public:
     void setExpenseId(int newId);

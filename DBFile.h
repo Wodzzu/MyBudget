@@ -5,7 +5,6 @@
 #include <windows.h>
 #include <string>
 
-
 #include "Markup.h"
 #include "AuxilaryMethods.h"
 
@@ -13,17 +12,16 @@ using namespace std;
 
 class DBFile {
 
- const string FILE_NAME;
+    const string FILE_NAME;
 
- public:
-
+public:
 
     DBFile(string fileName): FILE_NAME(fileName) {};
 
     string getFileName();
-     bool isFileEmpty();
-     string changeDateToString (int dateNumber);
-     int changeDateToInt (string date);
+    bool isFileEmpty();
+    string changeDateToString (int dateNumber);
+    int changeDateToInt (string date);
 
 };
 #endif

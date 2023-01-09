@@ -78,35 +78,34 @@ int AuxilaryMethods::howManyDaysInMonth(string enteredDate) {
 
     userMonthNumber = changeStringToInt(userMonth);
 
-    if(userMonthNumber>0&&userMonthNumber<13){
+    if(userMonthNumber>0&&userMonthNumber<13) {
 
-    switch(userMonthNumber) {
-    case 1:
-    case 3:
-    case 5:
-    case 7:
-    case 8:
-    case 10:
-    case 12:
-        return 31;
+        switch(userMonthNumber) {
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
+            return 31;
+            break;
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            return 30;
+            break;
+        case 2: {
+            if(((userYearNumber%4==0)&&(userYearNumber%100!=0))||(userYearNumber%400==0))
+                return 29;
+            else
+                return 28;
+        }
         break;
-    case 4:
-    case 6:
-    case 9:
-    case 11:
-        return 30;
-        break;
-    case 2: {
-        if(((userYearNumber%4==0)&&(userYearNumber%100!=0))||(userYearNumber%400==0))
-            return 29;
-        else
-            return 28;
-    }
-    break;
 
-    }
-    }
-    else
+        }
+    } else
         return 0;
 }
 
@@ -158,7 +157,6 @@ bool AuxilaryMethods::checkDay(string date) {
 
     date.erase(0,8);
     userDayNumber = changeStringToInt(date);
-
 
     if(userDayNumber>0 && userDayNumber<=maxMonthDays)
         return true;
@@ -228,7 +226,6 @@ int AuxilaryMethods::getPreviousMonthDate() {
     previousMonthYear = 1900 + todayDate->tm_year;
 
     previousMonthFirstDayText = "01";
-
 
     if(previousMonth == 0) {
         previousMonth = 12;

@@ -1,24 +1,23 @@
 #include "MyBudget.h"
 
-void MyBudget::userChangePassword()
-{
+void MyBudget::userChangePassword() {
     userManager.changeUserPassword();
 }
 
 void MyBudget::userRegistration() {
 
-userManager.registerUser();
+    userManager.registerUser();
 }
 
-void MyBudget::logIn(){
+void MyBudget::logIn() {
 
-userManager.logInUser();
+    userManager.logInUser();
 
- budgetManager = new BudgetManager(INCOME_FILE_NAME,EXPENSE_FILE_NAME,userManager.getLoggedUserId());
+    budgetManager = new BudgetManager(INCOME_FILE_NAME,EXPENSE_FILE_NAME,userManager.getLoggedUserId());
 
 }
 
-void MyBudget::logOut(){
+void MyBudget::logOut() {
 
     userManager.setLoggedUserId(0);
     delete budgetManager;
@@ -49,9 +48,9 @@ char MyBudget::userMenu() {
     cout << "---------------------------" << endl;
     cout << "1. Add Income" << endl;
     cout << "2. Add Expense" << endl;
-    cout << "3. Running month Bilance" << endl;
-    cout << "4. Previous month Bilance" << endl;
-    cout << "5. Date to Date Bilance" << endl;
+    cout << "3. Running month Balance" << endl;
+    cout << "4. Previous month Balance" << endl;
+    cout << "5. Date to Date Balance" << endl;
     cout << "---------------------------" << endl;
     cout << "6. Change Password" << endl;
     cout << "7. Log Out" << endl;
@@ -84,36 +83,35 @@ void MyBudget::mainMenu() {
                 system("pause");
                 break;
             }
-        }else {
+        } else {
 
             pick = userMenu();
 
             switch (pick) {
             case '1':
-          budgetManager->registerIncome();
+                budgetManager->registerIncome();
                 break;
             case '2':
-          budgetManager->registerExpense();
+                budgetManager->registerExpense();
                 break;
             case '3':
                 budgetManager->runningMonthCashBalance();
                 break;
             case '4':
-            budgetManager->previousMonthCashBalance();
+                budgetManager->previousMonthCashBalance();
                 break;
             case '5':
-           budgetManager->periodCashBalance();
+                budgetManager->periodCashBalance();
                 break;
             case '6':
-           userChangePassword();
+                userChangePassword();
                 break;
             case '7':
-                   logOut();
+                logOut();
                 break;
 
             }
         }
     }
-
 }
 
