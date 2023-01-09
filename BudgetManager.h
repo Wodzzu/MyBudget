@@ -28,12 +28,11 @@ public:
     BudgetManager(string incomeFileName, string expenseFileName, int loggedUserId) : incomeFile(incomeFileName), expenseFile(expenseFileName), LOGGED_USER_ID(loggedUserId)
     {incomes = incomeFile.loadUserIncomes(LOGGED_USER_ID);expenses = expenseFile.loadUserExpenses(LOGGED_USER_ID);};
 
-
+void showBalance(int firstPeriodDate, int lastPeriodDate);
 void runningMonthCashBalance();
 void previousMonthCashBalance();
 void registerIncome();
 void registerExpense();
-void showAllData();
 void periodCashBalance();
 
 };

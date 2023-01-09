@@ -173,54 +173,24 @@ sort(expenses.begin(),expenses.end(),incomeOperator());
 
 }
 
-void BudgetManager::showAllData() {
-    for (int i = 0; i<incomes.size(); i++) {
-        cout<<incomes[i].getIncomeId()<<endl;
-        cout<<incomes[i].getUserId()<<endl;
-        cout<<incomes[i].getIncomeDate()<<endl;
-        cout<<incomes[i].getItem()<<endl;
-        cout<<incomes[i].getAmount()<<endl;
-    }
-    system("pause");
-}
 void BudgetManager::runningMonthCashBalance(){
 
-int firstRunningMonthDay=0;
+int firstRunningMonthDay=0,maxDaysNumberInRunningMonth,maxDaysInMonthDateNumber;
 double runningMonthIncome=0,runningMonthExpense=0;
-string firstRunningMonthDayText ="";
+string firstRunningMonthDayText ="",maxDaysInRunningMonthText="";
+
 
 firstRunningMonthDayText =  AuxilaryMethods::changeIntToString(getTodayDate());
+maxDaysNumberInRunningMonth = AuxilaryMethods::howManyDaysInMonth(firstRunningMonthDayText);
+maxDaysInRunningMonthText=firstRunningMonthDayText.replace(6,2,AuxilaryMethods::changeIntToString(maxDaysNumberInRunningMonth));
+maxDaysInMonthDateNumber = AuxilaryMethods::changeStringToInt(maxDaysInRunningMonthText);
 firstRunningMonthDayText.replace(6,2,"01");
 firstRunningMonthDay = AuxilaryMethods::changeStringToInt(firstRunningMonthDayText);
 
 cout<<endl<<"*****Running Month Cash Balance*****"<<endl;
 
-cout<<endl<<"Incomes: "<<endl;
+showBalance(firstRunningMonthDay,maxDaysInMonthDateNumber);
 
-sortCashOperationByDate();
-
-for(int i = 0;i<incomes.size();i++)
-{
-    if(incomes[i].getUserId()==LOGGED_USER_ID && incomes[i].getIncomeDate()>=firstRunningMonthDay ){
-    cout<<"Id :"<<incomes[i].getIncomeId()<<" - Date: "<<incomes[i].getIncomeDate()<<" - Item: "<<incomes[i].getItem()<<" - Amount: "<<incomes[i].getAmount()<<endl;
-
-        runningMonthIncome= runningMonthIncome + incomes[i].getAmount();
-    }
-}
-cout<<endl<<"Expenses: "<<endl;
-
-for(int i = 0;i<expenses.size();i++)
-{
-    if(expenses[i].getUserId()==LOGGED_USER_ID && expenses[i].getExpenseDate()>=firstRunningMonthDay ){
-    cout<<"Id :"<<expenses[i].getExpenseId()<<" - Date: "<<expenses[i].getExpenseDate()<<" - Item: "<<expenses[i].getItem()<<" - Amount: "<<expenses[i].getAmount()<<endl;
-
-        runningMonthExpense= runningMonthExpense + expenses[i].getAmount();
-    }
-}
-cout<<endl<<"Incomes Total: "<< runningMonthIncome<<endl;
-cout<<"Expenses Total: "<< runningMonthExpense<<endl;
-cout<<"Balance: "<<runningMonthIncome-runningMonthExpense<<endl<<endl;
-system("pause");
 }
 
 void BudgetManager::previousMonthCashBalance(){
@@ -232,39 +202,9 @@ string maxDaysInMonth = AuxilaryMethods::changeIntToString(maxPreviousMonthDays)
 string maxPreviousMonthDateText = previousMonthDateText.erase(6,2)+maxDaysInMonth;
 int previousMonthDateMaxNumberOfDays = AuxilaryMethods::changeStringToInt(maxPreviousMonthDateText);
 
-
-
-double previousMonthIncome=0,previousMonthExpense=0;
-
-
 cout<<endl<<"*****Previous Month Cash Balance*****"<<endl;
 
-cout<<endl<<"Incomes: "<<endl;
-
-sortCashOperationByDate();
-
-for(int i = 0;i<incomes.size();i++)
-{
-    if(incomes[i].getUserId()==LOGGED_USER_ID && incomes[i].getIncomeDate()>=previousMonthDate && incomes[i].getIncomeDate()<=previousMonthDateMaxNumberOfDays ){
-    cout<<"Id :"<<incomes[i].getIncomeId()<<" - Date: "<<incomes[i].getIncomeDate()<<" - Item: "<<incomes[i].getItem()<<" - Amount: "<<incomes[i].getAmount()<<endl;
-
-        previousMonthIncome= previousMonthIncome + incomes[i].getAmount();
-    }
-}
-cout<<endl<<"Expenses: "<<endl;
-
-for(int i = 0;i<expenses.size();i++)
-{
-    if(expenses[i].getUserId()==LOGGED_USER_ID && expenses[i].getExpenseDate()>=previousMonthDate && expenses[i].getExpenseDate()<=previousMonthDateMaxNumberOfDays ){
-    cout<<"Id :"<<expenses[i].getExpenseId()<<" - Date: "<<expenses[i].getExpenseDate()<<" - Item: "<<expenses[i].getItem()<<" - Amount: "<<expenses[i].getAmount()<<endl;
-
-        previousMonthExpense= previousMonthExpense + expenses[i].getAmount();
-    }
-}
-cout<<endl<<"Incomes Total: "<< previousMonthIncome<<endl;
-cout<<"Expenses Total: "<< previousMonthExpense<<endl;
-cout<<"Balance: "<<previousMonthIncome-previousMonthExpense<<endl<<endl;
-system("pause");
+showBalance(previousMonthDate,previousMonthDateMaxNumberOfDays);
 
 }
 
@@ -297,32 +237,41 @@ if(firstDateNumber>secondDateNumber){
 
 cout<<endl<<"*****Period Cash Balance*****"<<endl;
 
-cout<<endl<<"Incomes: "<<endl;
+showBalance(firstDateNumber,secondDateNumber);
+
+}
+
+void BudgetManager::showBalance(int firstPeriodDate, int lastPeriodDate){
+
+double incomeSum=0,expenseSum=0;
 
 sortCashOperationByDate();
 
+cout<<endl<<"Incomes: "<<endl;
+
 for(int i = 0;i<incomes.size();i++)
 {
-    if(incomes[i].getUserId()==LOGGED_USER_ID && incomes[i].getIncomeDate()>=firstDateNumber && incomes[i].getIncomeDate()<=secondDateNumber ){
+    if(incomes[i].getUserId()==LOGGED_USER_ID && incomes[i].getIncomeDate()>=firstPeriodDate && incomes[i].getIncomeDate()<=lastPeriodDate ){
     cout<<"Id :"<<incomes[i].getIncomeId()<<" - Date: "<<incomes[i].getIncomeDate()<<" - Item: "<<incomes[i].getItem()<<" - Amount: "<<incomes[i].getAmount()<<endl;
 
-        previousMonthIncome= previousMonthIncome + incomes[i].getAmount();
+        incomeSum= incomeSum + incomes[i].getAmount();
     }
 }
 cout<<endl<<"Expenses: "<<endl;
 
 for(int i = 0;i<expenses.size();i++)
 {
-    if(expenses[i].getUserId()==LOGGED_USER_ID && expenses[i].getExpenseDate()>=firstDateNumber && expenses[i].getExpenseDate()<=secondDateNumber ){
+    if(expenses[i].getUserId()==LOGGED_USER_ID && expenses[i].getExpenseDate()>=firstPeriodDate && expenses[i].getExpenseDate()<=lastPeriodDate ){
     cout<<"Id :"<<expenses[i].getExpenseId()<<" - Date: "<<expenses[i].getExpenseDate()<<" - Item: "<<expenses[i].getItem()<<" - Amount: "<<expenses[i].getAmount()<<endl;
 
-        previousMonthExpense= previousMonthExpense + expenses[i].getAmount();
+        expenseSum= expenseSum + expenses[i].getAmount();
     }
 }
-cout<<endl<<"Incomes Total: "<< previousMonthIncome<<endl;
-cout<<"Expenses Total: "<< previousMonthExpense<<endl;
-cout<<"Balance: "<<previousMonthIncome-previousMonthExpense<<endl<<endl;
+cout<<endl<<"Incomes Total: "<< incomeSum<<endl;
+cout<<"Expenses Total: "<< expenseSum<<endl;
+cout<<"Balance: "<<incomeSum-expenseSum<<endl<<endl;
 system("pause");
 
 }
+
 
