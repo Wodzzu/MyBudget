@@ -14,7 +14,7 @@ class IncomeFile : public DBFile {
 
 public:
 
-    IncomeFile(string fileName) : DBFile(fileName) {};
+    IncomeFile(string incomeFileName) : DBFile(incomeFileName) {};
 
     void addIncomeToFile(Income income);
     vector <Income> loadUserIncomes(int loggedUserId);

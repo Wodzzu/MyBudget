@@ -9,8 +9,7 @@
 using namespace std;
 
 class AuxilaryMethods {
-    time_t today = time(0);
-    tm *todayDate = localtime(&today);
+
 
 public:
     static string changeIntToString(int number);

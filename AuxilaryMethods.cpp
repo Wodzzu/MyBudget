@@ -112,6 +112,9 @@ int AuxilaryMethods::howManyDaysInMonth(string enteredDate) {
 
 bool AuxilaryMethods::checkYear(string date) {
 
+time_t today = time(0);
+    tm *todayDate = localtime(&today);
+
     string userYear;
     int presentYear,userYearNumber;
 
