@@ -16,7 +16,7 @@ void IncomeFile::addIncomeToFile(Income income) {
     xml.IntoElem();
     xml.AddElem("IncomeId",income.getIncomeId() );
     xml.AddElem("UserId", income.getUserId());
-    xml.AddElem("IncomeDate", changeDateToString(income.getIncomeDate()));
+    xml.AddElem("IncomeDate", AuxilaryMethods::changeDateToString(income.getIncomeDate()));
     xml.AddElem("Item", income.getItem());
     xml.AddElem("Amount", AuxilaryMethods::changeDoubleToString(income.getAmount()));
 
@@ -25,7 +25,6 @@ void IncomeFile::addIncomeToFile(Income income) {
 }
 
 vector <Income> IncomeFile::loadUserIncomes(int loggedUserId) {
-
 
     CMarkup xml;
     Income income;
@@ -47,7 +46,7 @@ vector <Income> IncomeFile::loadUserIncomes(int loggedUserId) {
             if(idFromFile == loggedUserId) {
                 income.setUserId(idFromFile);
                 xml.FindElem("IncomeDate");
-                income.setIncomeDate(DBFile::changeDateToInt(xml.GetData()));
+                income.setIncomeDate(AuxilaryMethods::changeDateToInt(xml.GetData()));
                 xml.FindElem("Item");
                 income.setItem(xml.GetData());
                 xml.FindElem("Amount");
@@ -57,10 +56,6 @@ vector <Income> IncomeFile::loadUserIncomes(int loggedUserId) {
             } else
                 xml.OutOfElem();
         }
-    } else {
-
-        cout << "I can not load the incomes file."<< endl<<endl;
-        Sleep(1500);
     }
     return incomes;
 

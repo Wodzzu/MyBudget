@@ -10,7 +10,6 @@ using namespace std;
 
 class AuxilaryMethods {
 
-
 public:
     static string changeIntToString(int number);
     static char loadMark();
@@ -26,5 +25,8 @@ public:
     static string changeDoubleToString(double number);
     static double changeStringToDouble(string number);
     static int getPreviousMonthDate();
+    static int getTodayDate();
+    static string changeDateToString(int dateNumber);
+    static int changeDateToInt(string date);
 };
 #endif

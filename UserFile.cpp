@@ -1,6 +1,5 @@
 #include "UserFile.h"
 
-
 void UserFile::addUserToFile(User user) {
 
     CMarkup xml;
@@ -15,7 +14,7 @@ void UserFile::addUserToFile(User user) {
     xml.IntoElem();
     xml.AddElem("User");
     xml.IntoElem();
-    xml.AddElem("UserId",user.getId() );
+    xml.AddElem("UserId", user.getId() );
     xml.AddElem("FirstName", user.getFirstName());
     xml.AddElem("LastName", user.getLastName());
     xml.AddElem("Login", user.getLogin());
@@ -51,10 +50,6 @@ vector <User> UserFile::loadUsersFromFile() {
             xml.OutOfElem();
             users.push_back(user);
         }
-    } else {
-
-        cout << "I can not load the Users file."<< endl<<endl;
-        Sleep(1500);
     }
     return users;
 
@@ -75,7 +70,7 @@ void UserFile::addChangedPasswordToFile(string newPassword, int loggedUserId) {
             xml.IntoElem();
             xml.FindElem("UserId");
             idFromFile = atoi(MCD_2PCSZ(xml.GetData()));
-            if(idFromFile==loggedUserId) {
+            if(idFromFile == loggedUserId) {
                 xml.FindElem("Password");
                 xml.SetData(newPassword);
             }
