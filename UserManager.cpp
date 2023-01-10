@@ -66,7 +66,7 @@ int UserManager::logInUser() {
     cout << endl << "Write login: ";
     login = AuxilaryMethods::loadLine();
 
-    for (int i = 0; i <users.size(); i++) {
+    for (unsigned int i = 0; i <users.size(); i++) {
         if (users[i].getLogin() == login) {
             for (int trialNumber = 3; trialNumber > 0; trialNumber--) {
                 if(trialNumber > 1) {
@@ -115,7 +115,7 @@ void UserManager::changeUserPassword() {
     cout << "Write your new password: ";
     newPassword = AuxilaryMethods::loadLine();
 
-    for (int i =0; i < users.size(); i++) {
+    for (unsigned int i =0; i < users.size(); i++) {
         if (users[i].getId() == loggedUserId) {
             users[i].setPassword(newPassword);
             cout << "Password has been changed." << endl << endl;
