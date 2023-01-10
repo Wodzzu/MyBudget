@@ -1,12 +1,13 @@
 #include "AuxilaryMethods.h"
 
-string AuxilaryMethods::changeIntToString(int number) {
+string AuxilaryMethods::changeIntToString( int number) {
     ostringstream ss;
     ss << number;
     string str = ss.str();
     return str;
 }
-string AuxilaryMethods::changeDoubleToString(double number) {
+
+string AuxilaryMethods::changeDoubleToString( double number) {
     ostringstream ss;
     ss << number;
     string str = ss.str();
@@ -28,6 +29,7 @@ char AuxilaryMethods::loadMark() {
     }
     return mark;
 }
+
 string AuxilaryMethods::loadLine() {
     string line = "";
     getline(cin, line);
@@ -41,11 +43,12 @@ int AuxilaryMethods::changeStringToInt(string number) {
 
     return numberInt;
 }
+
 double AuxilaryMethods::changeStringToDouble(string number) {
 
 
-    for (int i = 0; i < number.length(); i++) {
-        if(number[i]==',')
+    for ( unsigned int i = 0; i < number.length(); i++) {
+        if( number[i]==',')
             number[i]='.';
     }
     double numberDouble;
@@ -55,7 +58,7 @@ double AuxilaryMethods::changeStringToDouble(string number) {
     return numberDouble;
 }
 
-string AuxilaryMethods::changeFirstLetterToCapital(string text) {
+string AuxilaryMethods::changeFirstLetterToCapital( string text) {
     if (!text.empty()) {
         transform(text.begin(), text.end(), text.begin(), ::tolower);
         text[0] = toupper(text[0]);
@@ -64,8 +67,8 @@ string AuxilaryMethods::changeFirstLetterToCapital(string text) {
 }
 
 int AuxilaryMethods::howManyDaysInMonth(string enteredDate) {
-    string userMonth,userYear;
-    int presentMonth, userMonthNumber,userYearNumber;
+    string userMonth, userYear;
+    int userMonthNumber, userYearNumber;
 
     userMonth = enteredDate;
     userMonth.erase(0,5);
@@ -75,7 +78,6 @@ int AuxilaryMethods::howManyDaysInMonth(string enteredDate) {
     userYear.erase(userYear.begin()+4,userYear.end());
 
     userYearNumber = changeStringToInt(userYear);
-
     userMonthNumber = changeStringToInt(userMonth);
 
     if(userMonthNumber>0&&userMonthNumber<13) {
@@ -105,18 +107,17 @@ int AuxilaryMethods::howManyDaysInMonth(string enteredDate) {
         break;
 
         }
-    } else
-        return 0;
+    }
+    return 0;
 }
-
 
 bool AuxilaryMethods::checkYear(string date) {
 
-time_t today = time(0);
+    time_t today = time(0);
     tm *todayDate = localtime(&today);
 
     string userYear;
-    int presentYear,userYearNumber;
+    int presentYear, userYearNumber;
 
     date.erase(date.begin()+4,date.end());
     userYearNumber = changeStringToInt(date);
@@ -125,13 +126,12 @@ time_t today = time(0);
 
     if(userYearNumber>=2000 && userYearNumber<=presentYear) {
         return true;
-    } else {
-        cout<<"You wrote wrong year.Try agian."<<endl;
-        return false;
-        system("pause");
-
     }
+    cout<<"You wrote wrong year.Try agian."<<endl;
+    return false;
+
 }
+
 bool AuxilaryMethods::checkMonth(string date) {
 
     string userMonth;
@@ -142,13 +142,12 @@ bool AuxilaryMethods::checkMonth(string date) {
 
     userMonthNumber = changeStringToInt(date);
 
-    if(userMonthNumber>0 && userMonthNumber <=12)
+    if(userMonthNumber>0 && userMonthNumber <=12) {
         return true;
-    else {
-        cout<<"You wrote wrong month.Try agian."<<endl;
-        return false;
-        system("pause");
     }
+    cout<<"You wrote wrong month.Try agian."<<endl;
+    return false;
+
 }
 
 bool AuxilaryMethods::checkDay(string date) {
@@ -161,29 +160,24 @@ bool AuxilaryMethods::checkDay(string date) {
     date.erase(0,8);
     userDayNumber = changeStringToInt(date);
 
-    if(userDayNumber>0 && userDayNumber<=maxMonthDays)
+    if(userDayNumber>0 && userDayNumber<=maxMonthDays) {
         return true;
-
-    else {
-        cout<<"You wrote wrong day.Try agian."<<endl;
-        return false;
-        system("pause");
     }
+    cout<<"You wrote wrong day.Try agian."<<endl;
+    return false;
 }
 
-bool AuxilaryMethods::checkUserDate (string date) {
+bool AuxilaryMethods::checkUserDate(string date) {
 
     AuxilaryMethods auxMethods;
     string userDate = date;
-    bool goodYear,goodMonth,goodDay,goodDate;
+    bool goodYear, goodMonth, goodDay;
 
     if (userDate.length() !=10) {
-        cout<<"Wrong date format. You wrote to many or to low marks."<<endl;
-        system ("pause");
+        cout << "Wrong date format. You wrote to many or to low marks." << endl;
         return false;
-    } else if(userDate[4]!='-' || userDate[7]!='-') {
-        cout<<"Wrong yyyy-mm-dd  format."<<endl;
-        system ("pause");
+    } else if (userDate[4]!='-' || userDate[7]!='-') {
+        cout << "Wrong yyyy-mm-dd  format." << endl;
         return false;
     } else {
         goodYear = auxMethods.checkYear(userDate);
@@ -199,18 +193,18 @@ bool AuxilaryMethods::checkUserDate (string date) {
 
 int AuxilaryMethods::changeEnteredDateToNumber(string date) {
 
-    string enteredYear,enteredMonth,enteredDay,textDate;
+    string enteredYear, enteredMonth, enteredDay, textDate;
     int numberEnteredDate;
 
-    for (int i = 0; i<date.length() ; i++) {
+    for ( unsigned int i = 0; i <date.length(); i++) {
         if(i<4)
-            enteredYear=enteredYear+date[i];
+            enteredYear = enteredYear+date[i];
         else if(i>4 && i<7)
             enteredMonth = enteredMonth+date[i];
         else if(i>7)
             enteredDay = enteredDay+date[i];
     }
-    textDate = enteredYear+enteredMonth+enteredDay;
+    textDate = enteredYear + enteredMonth + enteredDay;
     numberEnteredDate = AuxilaryMethods::changeStringToInt(textDate);
     return numberEnteredDate;
 }
@@ -220,12 +214,12 @@ int AuxilaryMethods::getPreviousMonthDate() {
     time_t today = time(0);
     tm *todayDate = localtime(&today);
 
-    int presentMonth,previousMonth,previousMonthYear,previousMonthDateNumber;
-    string previousMonthText,previousMonthYearText,previousMonthFirstDayText,previousMonthDate;
+    int presentMonth, previousMonth, previousMonthYear, previousMonthDateNumber;
+    string previousMonthText, previousMonthYearText, previousMonthFirstDayText, previousMonthDate;
 
     presentMonth = 1+ todayDate->tm_mon;
 
-    previousMonth = presentMonth -1;
+    previousMonth = presentMonth - 1;
     previousMonthYear = 1900 + todayDate->tm_year;
 
     previousMonthFirstDayText = "01";
@@ -239,11 +233,50 @@ int AuxilaryMethods::getPreviousMonthDate() {
         previousMonthText = changeIntToString(previousMonth);
         previousMonthYearText = changeIntToString(previousMonthYear);
         if(previousMonthText.length()<2)
-            previousMonthText='0'+previousMonthText;
+            previousMonthText='0' + previousMonthText;
 
     }
 
-    previousMonthDate = previousMonthYearText+previousMonthText+previousMonthFirstDayText;
+    previousMonthDate = previousMonthYearText + previousMonthText + previousMonthFirstDayText;
     previousMonthDateNumber = changeStringToInt(previousMonthDate);
     return previousMonthDateNumber;
+}
+
+int AuxilaryMethods::getTodayDate() {
+
+    time_t today = time(0);
+    int presentYearNumber, presentMonthNumber, presentDayNumber, presentDateNumber;
+    string presentYearText, presentMonthText, presentDayText, presentDateText;
+    tm *date = localtime(&today);
+
+    presentYearNumber = 1900 + date->tm_year;
+    presentMonthNumber = 1+date->tm_mon;
+    presentDayNumber = date->tm_mday;
+    presentYearText = AuxilaryMethods::changeIntToString(presentYearNumber);
+    presentMonthText = AuxilaryMethods::changeIntToString(presentMonthNumber);
+    if(presentMonthText.length() < 2)
+        presentMonthText = '0' + presentMonthText;
+    presentDayText = AuxilaryMethods::changeIntToString(presentDayNumber);
+    if(presentDayText.length() < 2)
+        presentDayText = '0' + presentDayText;
+    presentDateText = presentYearText + presentMonthText + presentDayText;
+    presentDateNumber = AuxilaryMethods::changeStringToInt(presentDateText);
+    return presentDateNumber;
+}
+
+string AuxilaryMethods::changeDateToString(int dateNumber) {
+    string dateText= "";
+    dateText = AuxilaryMethods::changeIntToString(dateNumber);
+    dateText.insert(4,"-");
+    dateText.insert(7,"-");
+    return dateText;
+}
+
+int AuxilaryMethods::changeDateToInt(string date) {
+
+    int dateNumber;
+    date.erase(4,1);
+    date.erase(6,1);
+    dateNumber = AuxilaryMethods::changeStringToInt(date);
+    return dateNumber;
 }

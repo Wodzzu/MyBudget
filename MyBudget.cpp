@@ -5,14 +5,12 @@ void MyBudget::userChangePassword() {
 }
 
 void MyBudget::userRegistration() {
-
     userManager.registerUser();
 }
 
 void MyBudget::logIn() {
 
     userManager.logInUser();
-
     budgetManager = new BudgetManager(INCOME_FILE_NAME,EXPENSE_FILE_NAME,userManager.getLoggedUserId());
 
 }
@@ -60,7 +58,6 @@ char MyBudget::userMenu() {
 
     return pick;
 }
-
 
 void MyBudget::mainMenu() {
 
